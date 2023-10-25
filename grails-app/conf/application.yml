@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: mbds_emsi_23_24
+        defaultPackage: com.mbds.parcours
     gorm:
         reactor:
             # Whether to translate GORM events into Reactor events
