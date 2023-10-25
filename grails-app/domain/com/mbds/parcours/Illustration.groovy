@@ -4,6 +4,6 @@ class Illustration {
     String name
 
     static constraints = {
-        name blank: false, nullable: false, unique: true
+        name blank: false, nullable: false
     }
 }
