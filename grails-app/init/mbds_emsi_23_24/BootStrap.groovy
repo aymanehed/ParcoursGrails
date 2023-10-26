@@ -18,7 +18,7 @@ class BootStrap {
         ["Alice","Bob","Charly","Denis","Etienne"].each {
             String uName ->
                 // Création de la nouvelle instance d'utilisateur
-                def userInstance = new User(username: uName, password: "password", email: uName+"@parcours.com").save()
+                def userInstance = new User(username: uName, password: "password", email: uName+"@parcours.com", thumbnail: new Illustration(name: "grails.svg")).save()
                 // Pour chaque utilisateur on ajoute 3 parcours
                 (1..3).each {
                     Integer parcoursIdx ->
