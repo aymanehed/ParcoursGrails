@@ -10,6 +10,12 @@ class UrlMappings {
         }
 
         "/"(view:"/index")
+        "/POI/index"(view:"/POI/index")
+        "/root"(view:"/user/index")
+        "/parcours/List"(view:"/parcours/index")
+        "/Signup/auth"(view:"/Signup/auth")
+        "/login/auth"(view:"/login/auth")
+
         "500"(view:'/error')
         "404"(view:'/notFound')
     }

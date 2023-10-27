@@ -16,6 +16,7 @@ class UserController {
         respond userService.list(params), model:[userCount: userService.count()]
     }
 
+
     def show(Long id) {
         respond userService.get(id)
     }
@@ -90,7 +91,7 @@ class UserController {
             notFound()
             return
         }
-
+        UserRole.findByUser(userService.get(id)).delete(flush:true)
         userService.delete(id)
 
         request.withFormat {

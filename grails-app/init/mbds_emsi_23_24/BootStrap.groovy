@@ -52,6 +52,7 @@ class BootStrap {
                  *              -> Save les Illustrations de POI
                  *          -> Save les Illustrations de parcours
                  */
+                UserRole.create(userInstance, roleUser, true)
                 userInstance.save(flush: true, failOnError: true)
         }
 

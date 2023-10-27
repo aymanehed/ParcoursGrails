@@ -21,7 +21,20 @@
         -khtml-box-shadow: 2px 2px 2px #eee;
         box-shadow: 2px 2px 2px #eee;
     }
-
+    .wrapper form .button input{
+        color: #fff;
+        font-size: 20px;
+        font-weight: 500;
+        padding-left: 0px;
+        background: #16a085;
+        border: 1px solid #16a085;
+        cursor: pointer;
+    }
+     .signup-link{
+        text-align: center;
+        margin-top: 20px;
+        font-size: 12px;
+    }
     #login .inner .fheader {
         padding: 18px 26px 14px 26px;
         background-color: #f7f7ff;
@@ -108,10 +121,11 @@
                 <input type="checkbox" class="chk" name="${rememberMeParameter ?: 'remember-me'}" id="remember_me" <g:if test='${hasCookie}'>checked="checked"</g:if>/>
                 <label for="remember_me"><g:message code='springSecurity.login.remember.me.label'/></label>
             </p>
+            <div class="row button">
+                <input type="submit" id="submit"  value="${message(code: 'springSecurity.login.button')}"/>
+                <div class="signup-link">Not a member? <a href="/Signup/auth">Signup now</a></div>
+            </div>
 
-            <p>
-                <input type="submit" id="submit" value="${message(code: 'springSecurity.login.button')}"/>
-            </p>
         </form>
     </div>
 </div>
