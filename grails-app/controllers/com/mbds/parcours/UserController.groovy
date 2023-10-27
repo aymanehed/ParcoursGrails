@@ -35,6 +35,14 @@ class UserController {
 
         try {
             userService.save(user)
+
+            def roleUser = Role.findByAuthority("ROLE_USER")
+            if(!roleUser){
+                roleUser = new Role(authority: "ROLE_USER").save()
+            }
+            UserRole.create(user, roleUser, true)
+
+
         } catch (ValidationException e) {
             respond user.errors, view:'create'
             return
