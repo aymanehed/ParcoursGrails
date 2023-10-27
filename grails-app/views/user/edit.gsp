@@ -62,8 +62,6 @@
                 <g:select name="role" from="${Role.list()}" optionKey="id" optionValue="authority" value="${user.getAuthorities()?.first()?.id}"/>
             </div>
 
-
-
             <div class="fieldcontain">
                 <label for="thumbnail">Thumbnail</label>
 

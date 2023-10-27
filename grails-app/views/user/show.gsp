@@ -19,7 +19,50 @@
             <g:if test="${flash.message}">
             <div class="message" role="status">${flash.message}</div>
             </g:if>
-            <f:display bean="user" />
+            <ol class="property-list user">
+                <li class="fieldcontain">
+                    <span id="username-label" class="property-label">Username</span>
+                    <div class="property-value" aria-labelledby="username-label">${user.username}</div>
+                </li>
+                <li class="fieldcontain">
+                    <span id="email-label" class="property-label">Email</span>
+                    <div class="property-value" aria-labelledby="email-label">${user.email}</div>
+                </li>
+                <li class="fieldcontain">
+                    <span id="thumbnail-label" class="property-label">Thumbnail</span>
+                    <div class="property-value" aria-labelledby="thumbnail-label">
+                        <g:if test="${user.thumbnail}">
+                            <g:link style="cursor: pointer;" id="${user.id}">
+                                <asset:image
+                                        src="${user.thumbnail?.name}"/></g:link>
+                        </g:if>
+                    </div>
+                </li>
+                <li class="fieldcontain">
+                    <span id="passwordExpired-label" class="property-label">Password Expired</span>
+                    <div class="property-value" aria-labelledby="passwordExpired-label">${user.accountExpired}</div>
+                </li>
+                <li class="fieldcontain">
+                    <span id="accountLocked-label" class="property-label">Account Locked</span>
+                    <div class="property-value" aria-labelledby="accountLocked-label">${user.accountLocked}</div>
+                </li>
+                <li class="fieldcontain">
+                    <span id="parcoursList-label" class="property-label">Parcours List</span>
+                    <div class="property-value" aria-labelledby="parcoursList-label"><ul>
+                            <g:each in="${user.parcoursList}" var="c">
+                                <li><g:link controller="parcours" action="show" id="${c.id}">${c?.name}</g:link></li>
+                            </g:each>
+                    </ul></div>
+                </li>
+                <li class="fieldcontain">
+                    <span id="accountExpired-label" class="property-label">Account Expired</span>
+                    <div class="property-value" aria-labelledby="accountExpired-label">${user.accountExpired}</div>
+                </li>
+                <li class="fieldcontain">
+                    <span id="enabled-label" class="property-label">Enabled</span>
+                    <div class="property-value" aria-labelledby="enabled-label">${user.enabled}</div>
+                </li>
+            </ol>
             <g:form resource="${this.user}" method="DELETE">
                 <fieldset class="buttons">
                     <g:link class="edit" action="edit" resource="${this.user}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
