@@ -7,9 +7,9 @@
 <body>
 <content tag="nav">
         <li class="dropdown">
-            <a href="/parcours/List" >Parcours </a>
+            <a href="/parcours/index">Parcours</a>
            <li class="dropdown">
-            <a href="/POI/index" >Interests </a>
+            <a href="/POI/index">Interests</a>
         </li>
     </content>
 
