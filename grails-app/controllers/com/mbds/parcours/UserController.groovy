@@ -21,10 +21,12 @@ class UserController {
         respond userService.get(id)
     }
 
+    @Secured('permitAll')
     def create() {
         respond new User(params)
     }
 
+    @Secured('permitAll')
     def save(User user) {
         if (user == null) {
             notFound()
@@ -33,6 +35,14 @@ class UserController {
 
         try {
             userService.save(user)
+
+            def roleUser = Role.findByAuthority("ROLE_USER")
+            if(!roleUser){
+                roleUser = new Role(authority: "ROLE_USER").save()
+            }
+            UserRole.create(user, roleUser, true)
+
+
         } catch (ValidationException e) {
             respond user.errors, view:'create'
             return
