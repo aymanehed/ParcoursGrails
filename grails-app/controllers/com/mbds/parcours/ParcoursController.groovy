@@ -18,15 +18,15 @@ class ParcoursController {
         params.max = Math.min(max ?: 10, 100)
         respond parcoursService.list(params), model:[parcoursCount: parcoursService.count()]
     }
-    @Secured(['ROLE_ADMIN','ROLE_USER'])
+    @Secured('permitAll')
     def show(Long id) {
         respond parcoursService.get(id)
     }
-    @Secured(['ROLE_ADMIN','ROLE_USER'])
+    @Secured('permitAll')
     def create() {
         respond new Parcours(params)
     }
-    @Secured('ROLE_ADMIN')
+    @Secured('permitAll')
     def save(Parcours parcours) {
         if (parcours == null) {
             notFound()
