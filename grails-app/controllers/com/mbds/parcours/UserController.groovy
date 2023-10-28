@@ -73,6 +73,17 @@ class UserController {
             // Création d'une illustration sur le fichier sauvegardé
             // Ajout de l'illustration à l'utilisateur
             def fileData = request.getFile("file")
+            if(fileData){
+                def savedPath = new File("C:\\Users\\lenovo\\Desktop\\grails-framework-heddad-aymane-khafife-jad\\grails-app\\assets\\images\\${fileData.originalFilename}")
+
+                def savedFile = new File(savedPath as String)
+                fileData.transferTo(savedFile)
+
+                def illustration = new Illustration()
+                illustration.name = fileData.originalFilename
+                illustration.save(flush: true)
+                user.thumbnail = illustration
+            }
 
             userService.save(user)
 
