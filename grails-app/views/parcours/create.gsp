@@ -27,8 +27,31 @@
             </g:hasErrors>
             <g:form resource="${this.parcours}" method="POST">
                 <fieldset class="form">
-                    <f:all bean="parcours"/>
-                </fieldset>
+<div class="fieldcontain required">
+  <label for="name">Name
+    <span class="required-indicator">*</span>
+  </label><input type="text" name="name" value="" required="" id="name">
+</div><div class="fieldcontain required">
+  <label for="description">Description
+    <span class="required-indicator">*</span>
+  </label><input type="text" name="description" value="" required="" id="description">
+</div><div class="fieldcontain required">
+                </select>
+                </div><div class="fieldcontain">
+                <label for="illustrationList">Illustration List</label>
+                    <g:link controller="illustration" action="create" id="${parcours.id}">Add Illustration</g:link>
+                    <ul></ul>
+            </div><div class="fieldcontain">
+                <label for="poiList">Poi List</label>
+                    <g:link controller="POI" action="create" id="${parcours.id}">Add POI</g:link>
+                </div><ul></ul>
+
+
+
+
+
+
+                        </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
                 </fieldset>

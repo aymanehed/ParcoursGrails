@@ -124,6 +124,7 @@
             <div class="row button">
                 <input type="submit" id="submit"  value="${message(code: 'springSecurity.login.button')}"/>
                 <div class="signup-link">Not a member? <g:link controller="user" action="create">Signup now</g:link></div>
+
             </div>
 
         </form>
