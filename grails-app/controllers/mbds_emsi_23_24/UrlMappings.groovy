@@ -11,7 +11,7 @@ class UrlMappings {
 
         "/"(view:"/index")
         "/POI/index"(view:"/POI/index")
-        "/root"(view:"/user/index")
+        "/root"(controller: "user", action: "index")
         "/parcours/List"(view:"/parcours/index")
         "/Signup/auth"(view:"/Signup/auth")
         "/login/auth"(view:"/login/auth")
