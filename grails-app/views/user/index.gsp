@@ -46,7 +46,7 @@
                 <td>
                     <g:if test="${user.thumbnail}">
                         <img src="${grailsApplication.config.illustrations.url + user.thumbnail.name}"/>
-%{--                        <asset:image src="${user.thumbnail.name}"/>--}%
+                    %{--                        <asset:image src="${user.thumbnail.name}"/>--}%
                     </g:if>
                 </td>
                 <td>
