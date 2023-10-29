@@ -5,6 +5,8 @@
     <meta name="layout" content="main"/>
     <g:set var="entityName" value="${message(code: 'user.label', default: 'User')}"/>
     <title><g:message code="default.edit.label" args="[entityName]"/></title>
+    <asset:stylesheet src="edit.css"/>
+    <asset:javascript src="DragAndDrop.js"/>
 </head>
 
 <body>
@@ -59,26 +61,27 @@
                 <label for="email">Role
                     <span class="required-indicator">*</span>
                 </label>
-                <g:select name="role" from="${Role.list()}" optionKey="id" optionValue="authority" value="${user.getAuthorities()?.first()?.id}"/>
+                <g:select name="role" from="${Role.list()}" optionKey="id" optionValue="authority"
+                          value="${user.getAuthorities()?.first()?.id}"/>
             </div>
 
-            <div class="fieldcontain">
-                <label for="thumbnail">Thumbnail</label>
-
-                <div style="display: inline-block;">
-                    <input type="file" name="file"/>
-                    <g:if test="${user.thumbnail}">
-                        <g:link style="cursor: pointer;" action="deleteThumb" id="${user.id}">
-                            <asset:image
-                                src="${user.thumbnail?.name}"/></g:link>
-                    </g:if>
+            <div class="image-upload-container">
+                <div class="file-drop-area">
+                    <span class="file-label">Drop file here or click to upload</span>
+                    <input type="file" name="file" class="drop-zone__input">
                 </div>
             </div>
+
+            <div class="image-preview" id="image-preview">
+                <g:if test="${user.thumbnail}">
+                    <g:link style="cursor: pointer;" action="deleteThumb" id="${user.id}">
+                        <asset:image
+                                src="${user.thumbnail?.name}"/></g:link>
+                </g:if>
+            </div>
         </fieldset>
-        <fieldset class="buttons">
-            <input class="save" type="submit"
-                   value="${message(code: 'default.button.update.label', default: 'Update')}"/>
-        </fieldset>
+        <input class="save" type="submit"
+               value="${message(code: 'default.button.update.label', default: 'Update')}"/>
     </g:form>
 </div>
 </body>
