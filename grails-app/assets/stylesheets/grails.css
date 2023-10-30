@@ -508,7 +508,7 @@ h8 {
     position: relative;
     max-width: 1400px;
     margin: 0 auto;
-    padding: 0 5%
+ object-fit: contain;
 }
 
 .row:before, .row:after {
@@ -576,6 +576,7 @@ h8 {
 }
 
 #content .colset-2-its:before, #content .colset-2-its:after {
+    width: 100%;
     content: " ";
     display: table
 }
