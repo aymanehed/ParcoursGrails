@@ -21,20 +21,7 @@
         -khtml-box-shadow: 2px 2px 2px #eee;
         box-shadow: 2px 2px 2px #eee;
     }
-    .wrapper form .button input{
-        color: #fff;
-        font-size: 20px;
-        font-weight: 500;
-        padding-left: 0px;
-        background: #16a085;
-        border: 1px solid #16a085;
-        cursor: pointer;
-    }
-     .signup-link{
-        text-align: center;
-        margin-top: 20px;
-        font-size: 12px;
-    }
+
     #login .inner .fheader {
         padding: 18px 26px 14px 26px;
         background-color: #f7f7ff;
@@ -98,10 +85,10 @@
 </head>
 
 <body>
+
 <div id="login">
     <div class="inner">
         <div class="fheader"><g:message code='springSecurity.login.header'/></div>
-
         <g:if test='${flash.message}'>
             <div class="login_message">${flash.message}</div>
         </g:if>
@@ -135,5 +122,11 @@
         document.forms['loginForm'].elements['${usernameParameter ?: 'username'}'].focus();
     })();
 </script>
+
+<div id="content" role="main">
+    <section class="row colset-2-its">
+
+    </section>
+</div>
 </body>
 </html>

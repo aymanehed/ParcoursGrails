@@ -24,9 +24,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                <g:link controller="logout" action="index">Logout</g:link>
                 <a class="navbar-brand" href="/#">
 		    <asset:image src="maps.png" alt="Map Logo"/>
+
+
                 </a>
+
             </div>
             <div class="navbar-collapse collapse" aria-expanded="false" style="height: 0.8px;">
                 <ul class="nav navbar-nav navbar-right">

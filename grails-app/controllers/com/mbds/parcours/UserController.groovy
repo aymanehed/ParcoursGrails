@@ -1,5 +1,6 @@
 package com.mbds.parcours
 
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
@@ -21,6 +22,10 @@ class UserController {
         respond userService.get(id)
     }
 
+    def home() {
+        render(view: 'home')
+
+    }
     @Secured('permitAll')
     def create() {
         respond new User(params)
@@ -34,6 +39,7 @@ class UserController {
         }
 
         try {
+
             userService.save(user)
 
             def roleUser = Role.findByAuthority("ROLE_USER")
@@ -50,10 +56,10 @@ class UserController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), user.id])
-                // if (user.authorities.contains(Role.findByAuthority("ROLE_ADMIN")))
-                   // redirect(uri: "/root")
-                //else
+                 if (user.authorities.contains(Role.findByAuthority("ROLE_ADMIN")))
                     redirect(uri: "/root")
+              else
+                        redirect(uri: "/home")
             }
             '*' { respond user, [status: CREATED] }
             }
