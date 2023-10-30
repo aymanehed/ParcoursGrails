@@ -1,3 +1,4 @@
+<%@ page import="com.mbds.parcours.Illustration" %>
 <!DOCTYPE html>
 <html>
     <head>

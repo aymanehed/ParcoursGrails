@@ -14,6 +14,9 @@ class BootStrap {
         // Association du compte administrateur avec le role admin
         UserRole.create(userAdmin, roleAdmin, true)
 
+        def simpleUser = new User(username: "user", password: "user", email: "user@parcours.com").save()
+        UserRole.create(simpleUser, roleUser, true)
+
         // On itère sur 5 username pour créer 5 utilisateurs
         ["Alice","Bob","Charly","Denis","Etienne"].each {
             String uName ->
