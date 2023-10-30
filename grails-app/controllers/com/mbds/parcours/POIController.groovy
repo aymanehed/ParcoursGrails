@@ -9,7 +9,7 @@ class POIController {
 
     POIService POIService
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", delete: "DELETE"]
     @Secured(['permitAll'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -55,8 +55,9 @@ class POIController {
             notFound()
             return
         }
-
         try {
+            POI.illustrationList*.id
+
             POIService.save(POI)
         } catch (ValidationException e) {
             respond POI.errors, view:'edit'
