@@ -5,6 +5,7 @@ html, code, kbd, pre, samp {
 
 html, body {
     height: 100%;
+    width: 100%;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -508,7 +509,7 @@ h8 {
     position: relative;
     max-width: 1400px;
     margin: 0 auto;
- object-fit: contain;
+    object-fit: cover;
 }
 
 .row:before, .row:after {

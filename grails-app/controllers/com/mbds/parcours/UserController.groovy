@@ -88,10 +88,6 @@ class UserController {
         }
 
         try {
-            // Récupérer le fichier dans les données
-            // Sauvegarder le fichier sur le disque
-            // Création d'une illustration sur le fichier sauvegardé
-            // Ajout de l'illustration à l'utilisateur
             def fileData = request.getFile("file")
             if(fileData!= null && ! fileData.isEmpty()) {
                 def savedPath = new File("C:\\Users\\lenovo\\Desktop\\grails_emsi_mbds_23_24\\grails-app\\assets\\images\${fileData.originalFilename}")
