@@ -1,6 +1,6 @@
 <html>
 <head>
-    <meta name="layout" content="${gspLayout ?: 'main'}"/>
+    <meta name="layout" content="main"/>
     <title><g:message code='springSecurity.login.title'/></title>
     <style type="text/css" media="screen">
     #login {
@@ -15,7 +15,7 @@
         margin: 60px auto;
         text-align: left;
         border: 1px solid #aab;
-        background-color: #f0f0fa;
+        background-color: white;
         -moz-box-shadow: 2px 2px 2px #eee;
         -webkit-box-shadow: 2px 2px 2px #eee;
         -khtml-box-shadow: 2px 2px 2px #eee;
@@ -110,7 +110,7 @@
             </p>
             <div class="row button">
                 <input type="submit" id="submit"  value="${message(code: 'springSecurity.login.button')}"/>
-                <div class="signup-link">Not a member? <g:link controller="user" action="create">Signup now</g:link></div>
+                <div class="signup-link">Not a member? <g:link controller="signup" action="index">Signup now</g:link></div>
 
             </div>
 

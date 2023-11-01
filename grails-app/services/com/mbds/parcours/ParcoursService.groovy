@@ -8,7 +8,6 @@ interface ParcoursService {
     Parcours get(Serializable id)
 
     List<Parcours> list(Map args)
-
     Long count()
 
     void delete(Serializable id)

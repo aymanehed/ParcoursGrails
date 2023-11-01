@@ -8,7 +8,6 @@ interface POIService {
     POI get(Serializable id)
 
     List<POI> list(Map args)
-
     Long count()
 
     void delete(Serializable id)

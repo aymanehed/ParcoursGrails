@@ -7,26 +7,22 @@ import javax.annotation.security.PermitAll
 
 import static org.springframework.http.HttpStatus.*
 
-
+@Secured(['ROLE_ADMIN','ROLE_USER'])
 class ParcoursController {
 
     ParcoursService parcoursService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-    @Secured('permitAll')
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond parcoursService.list(params), model:[parcoursCount: parcoursService.count()]
     }
-    @Secured('permitAll')
     def show(Long id) {
         respond parcoursService.get(id)
     }
-    @Secured('permitAll')
     def create() {
         respond new Parcours(params)
     }
-    @Secured('permitAll')
     def save(Parcours parcours) {
         if (parcours == null) {
             notFound()
@@ -48,11 +44,9 @@ class ParcoursController {
             '*' { respond parcours, [status: CREATED] }
         }
     }
-    @Secured(['ROLE_ADMIN','ROLE_USER'])
     def edit(Long id) {
         respond parcoursService.get(id)
     }
-    @Secured(['ROLE_ADMIN','ROLE_USER'])
     def update(Parcours parcours) {
         if (parcours == null) {
             notFound()
@@ -74,7 +68,6 @@ class ParcoursController {
             '*'{ respond parcours, [status: OK] }
         }
     }
-    @Secured(['ROLE_ADMIN','ROLE_USER'])
     def delete(Long id) {
         if (id == null) {
             notFound()
@@ -91,7 +84,6 @@ class ParcoursController {
             '*'{ render status: NO_CONTENT }
         }
     }
-    @Secured(['ROLE_ADMIN','ROLE_USER'])
     protected void notFound() {
         request.withFormat {
             form multipartForm {

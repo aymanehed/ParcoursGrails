@@ -9,9 +9,9 @@ import static org.springframework.http.HttpStatus.*
 class UserController {
 
     UserService userService
+    ParcoursService parcoursService
 
     static allowedMethods = [save: "POST", delete: "DELETE"]
-    @Secured('ROLE_ADMIN')
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond userService.list(params), model:[userCount: userService.count()]
@@ -21,16 +21,15 @@ class UserController {
     def show(Long id) {
         respond userService.get(id)
     }
-
     def home() {
-        render(view: 'home')
+        def modelAdmin=[userCount: userService.count(),parcoursCount:parcoursService.count()]
+        render(view: 'home',model: modelAdmin)
 
     }
     @Secured('permitAll')
     def create() {
         respond new User(params)
     }
-
     @Secured('permitAll')
     def save(User user) {
         if (user == null) {
@@ -39,8 +38,21 @@ class UserController {
         }
 
         try {
+            def fileData = request.getFile("file")
+            if(fileData){
+                def savedPath = new File("C:\\Users\\lenovo\\Desktop\\grails_emsi_mbds_23_24\\grails-app\\assets\\images\${fileData.originalFilename}")
+
+                def savedFile = new File(savedPath as String)
+                fileData.transferTo(savedFile)
+
+                def illustration = new Illustration()
+                illustration.name = fileData.originalFilename
+                illustration.save(flush: true)
+                user.thumbnail = illustration
+            }
 
             userService.save(user)
+
 
             def roleUser = Role.findByAuthority("ROLE_USER")
             if(!roleUser){
@@ -65,9 +77,6 @@ class UserController {
             }
         }
 
-
-
-
     def edit(Long id) {
         respond userService.get(id)
     }
@@ -84,8 +93,8 @@ class UserController {
             // Création d'une illustration sur le fichier sauvegardé
             // Ajout de l'illustration à l'utilisateur
             def fileData = request.getFile("file")
-            if(fileData){
-                def savedPath = new File("C:\\Users\\lenovo\\Desktop\\grails-framework-heddad-aymane-khafife-jad\\grails-app\\assets\\images\\${fileData.originalFilename}")
+            if(fileData!= null && ! fileData.isEmpty()) {
+                def savedPath = new File("C:\\Users\\lenovo\\Desktop\\grails_emsi_mbds_23_24\\grails-app\\assets\\images\${fileData.originalFilename}")
 
                 def savedFile = new File(savedPath as String)
                 fileData.transferTo(savedFile)
@@ -101,8 +110,10 @@ class UserController {
             // Gestion de l'attribution de role
             def roleInstance = Role.get(params.role)
             def userRoles = user.getAuthorities()
-            if ( !userRoles.contains(roleInstance))
+            if (!userRoles.contains(roleInstance))
+            {  UserRole.findByUser  (userService.get(user.id)).delete(flush:true)
                 UserRole.create(user, roleInstance, true)
+           }
 
         } catch (ValidationException e) {
             respond user.errors, view:'edit'
@@ -154,5 +165,8 @@ class UserController {
 
         redirect(action: "edit", id: userInstance.id)
     }
+
+
+
 
 }

@@ -6,7 +6,7 @@ import grails.validation.ValidationException
 
 import static org.springframework.http.HttpStatus.OK
 
-@Secured('permitAll')
+@Secured(['ROLE_ADMIN','ROLE_USER'])
 class ProfileController {
     SpringSecurityService springSecurityService
     UserService UserService

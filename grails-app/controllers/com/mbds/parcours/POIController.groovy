@@ -4,17 +4,17 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
-@Secured('permitAll')
+@Secured(['ROLE_ADMIN','ROLE_USER'])
 class POIController {
 
     POIService POIService
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-    @Secured(['permitAll'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond POIService.list(params), model:[POICount: POIService.count()]
     }
+
 
     def show(Long id) {
         respond POIService.get(id)

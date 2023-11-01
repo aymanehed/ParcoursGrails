@@ -3,6 +3,11 @@
  * Copyright 2011-2015 Twitter, Inc.
  * Licensed under the MIT license
  */
+$('.button-collapse').sideNav();
+
+$('.collapsible').collapsible();
+
+$('select').material_select();
 
 if (typeof jQuery === 'undefined') {
   throw new Error('Bootstrap\'s JavaScript requires jQuery')

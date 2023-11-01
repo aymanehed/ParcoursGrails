@@ -18,10 +18,10 @@
                 <g:eachError bean="${this.user}" var="error">
                 <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
                 </g:eachError>
+                <li></li>
             </ul>
             </g:hasErrors>
-            <g:form resource="${this.user}" method="POST" >
-                    <form action="/user/save" method="post"  enctype="multipart/form-data">
+                <g:form controller="user" action="save" id="${user.id}" method="POST" enctype="multipart/form-data">
                         <fieldset class="form">
                             <div class="fieldcontain required">
                                 <label for="username">Username
@@ -39,15 +39,14 @@
                         </div>
                             <div class="fieldcontain" style="display: flex">
                             <label for="thumbnail">Thumbnail</label>
-                            <input type="file"  name="Image" />
+                            <input type="file"  name="file" id="thumbnail" />
 
                         </fieldset>  </div>
                         <fieldset class="buttons">
                             <input type="submit" name="create" class="save" value="Create" id="create">
                         </fieldset>
-                    </form>
+                </g:form>
                 </div>
-            </g:form>
         </div>
     </body>
 </html>
