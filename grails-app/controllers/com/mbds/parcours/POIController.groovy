@@ -8,13 +8,8 @@ import static org.springframework.http.HttpStatus.*
 class POIController {
 
     POIService POIService
-
-<<<<<<< HEAD
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-=======
-    static allowedMethods = [save: "POST", delete: "DELETE"]
     @Secured(['permitAll'])
->>>>>>> 42ed214c657b69775f90b8216ed7477dcb3faf8b
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond POIService.list(params), model:[POICount: POIService.count()]

@@ -69,7 +69,7 @@
                         <h2 class="topic">Users</h2>
                     </div>
 
-                    <asset:image src="user.png"   class="nav-img" alt="Logout"/>
+                    <asset:image src="user.png"   class="nav-img" alt="user"/>
                 </div>
 
                 <div class="box box2">
@@ -78,20 +78,15 @@
                         <h2 class="topic">Parcours</h2>
                     </div>
 
-                    <img src=
-                         "https://media.geeksforgeeks.org/wp-content/uploads/20221210185030/14.png"
-                         alt="likes">
+                    <asset:image src="parcours.png"   class="nav-img" alt="parcours"/>
                 </div>
 
                 <div class="box box3">
                     <div class="text">
-                        <h2 class="topic-heading">122</h2>
+                        <h2 class="topic-heading">${poiCount}</h2>
                         <h2 class="topic">POI</h2>
                     </div>
-
-                    <img src=
-                         "https://media.geeksforgeeks.org/wp-content/uploads/20221210184645/Untitled-design-(32).png"
-                         alt="comments">
+                    <asset:image src="poi.png"   class="nav-img" alt="poi"/>
                 </div>
 
 
@@ -99,26 +94,22 @@
 
             <div class="report-container">
                 <div class="report-header">
-                    <h1 class="recent-Articles">Recent Articles</h1>
-                    <button class="view">View All</button>
+                    <h1 class="recent-Articles">Recent users</h1>
+                    <g:link controller="user" action="index" class="view" style="width: 65px">View All</g:link>
                 </div>
 
                 <div class="report-body">
                     <div class="report-topic-heading">
-                        <h3 class="t-op">Article</h3>
-                        <h3 class="t-op">Views</h3>
-                        <h3 class="t-op">Comments</h3>
-                        <h3 class="t-op">Status</h3>
+                        <h3 class="t-op">Username</h3>
+                        <h3 class="t-op">Email</h3>
                     </div>
-
+    <g:each in="${userList}" var="user">
                     <div class="items">
                         <div class="item1">
-                            <h3 class="t-op-nextlvl">Article 73</h3>
-                            <h3 class="t-op-nextlvl">2.9k</h3>
-                            <h3 class="t-op-nextlvl">210</h3>
-                            <h3 class="t-op-nextlvl label-tag">Published</h3>
+                            <h3 class="t-op-nextlvl">${user.username}</h3>
+                            <h3 class="t-op-nextlvl">${user.email}</h3>
                         </div>
-
+        </g:each>
                     </div>
                 </div>
             </div>

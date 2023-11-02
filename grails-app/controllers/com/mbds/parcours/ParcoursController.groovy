@@ -16,6 +16,7 @@ class ParcoursController {
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond parcoursService.list(params), model:[parcoursCount: parcoursService.count()]
+
     }
     def show(Long id) {
         respond parcoursService.get(id)

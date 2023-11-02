@@ -6,7 +6,7 @@ import grails.gorm.services.Service
 interface ParcoursService {
 
     Parcours get(Serializable id)
-
+    List<POI> PoiByParcours(Long id)
     List<Parcours> list(Map args)
     Long count()
 

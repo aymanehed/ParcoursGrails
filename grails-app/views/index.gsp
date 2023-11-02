@@ -194,13 +194,13 @@
 <div class="carousel">
     <div class="carousel_inner">
         <div class="carousel_item carousel_item__active">
-            <asset:image src="img1.jpg" class="carousel_img"/>
-        </div>
-        <div class="carousel_item">
             <asset:image src="img2.jpg" class="carousel_img"/>
         </div>
         <div class="carousel_item">
-            <asset:image src="img3.jpg" class="carousel_img"/>
+            <asset:image src="img4.jpg" class="carousel_img"/>
+        </div>
+        <div class="carousel_item">
+            <asset:image src="img5.jpg" class="carousel_img"/>
         </div>
     </div>
 

@@ -22,7 +22,16 @@ class UserController {
         respond userService.get(id)
     }
     def home() {
-        def modelAdmin=[userCount: userService.count(),parcoursCount:parcoursService.count()]
+        def TotalParcours=parcoursService.list();
+        def TotalPOI=0
+ for (parc in TotalParcours){
+     def Pois=parc.poiList
+     for(poi in Pois){
+         TotalPOI++
+     }
+ }
+      print(userService.list())
+        def modelAdmin=[userCount: userService.count(),parcoursCount:parcoursService.count(),poiCount:TotalPOI,userList: userService.list()]
         render(view: 'home',model: modelAdmin)
 
     }
