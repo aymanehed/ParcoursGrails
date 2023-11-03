@@ -23,7 +23,7 @@
             <f:table collection="${POIList}" />
 =======
 <head>
-    <meta name="layout" content="main"/>
+    <meta name="layout" content="navbar"/>
     <g:set var="entityName" value="${message(code: 'POI.label', default: 'POI')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
     <style>

@@ -113,6 +113,27 @@
         font-size: 10px;
         height: 27px;
     }
+
+
+        .viewAll1 {
+            width: 60px;
+            font-size: 10px;
+            height: 27px;
+            border-radius: 20px;
+            border: 1px solid #3f0097;
+            background-color: #3f0097;
+            color: #FFFFFF;
+            height: 25px;
+            text-align: center;
+            font-size: 12px;
+            font-weight: bold;
+            justify-content: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: transform 80ms ease-in;
+        }
+
+
     .report-header {
         height: 60px;
         padding: 10px 10px 5px 10px;
@@ -125,7 +146,9 @@
     @media screen and (max-width: 320px) {
     .recent-Articles {
         font-size: 12px;
+
     }
+
     .view {
         width: 50px;
         font-size: 8px;

@@ -4,6 +4,7 @@
     <meta name="layout" content="main"/>
     <g:set var="entityName" value="${message(code: 'parcours.label', default: 'Parcours')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <asset:stylesheet src="parcours_card.css"/>
 </head>
 
 <body>
@@ -24,35 +25,19 @@
         <div class="message" role="status">${flash.message}</div>
     </g:if>
 
-
-    <table>
-        <thead>
-        <tr>
-
-            <th class="sortable"><a href="/parcours/index?sort=name&amp;max=10&amp;order=asc">Name</a></th>
-
-            <th class="sortable"><a href="/parcours/index?sort=description&amp;max=10&amp;order=asc">Description</a>
-            </th>
-
-            <th class="sortable"><a href="/parcours/index?sort=author&amp;max=10&amp;order=asc">Author</a></th>
-
-        </tr>
-        </thead>
-        <tbody>
+    <div class="parcours-grid">
         <g:each in="${parcoursList}" var="parcours">
-            <tr class="even">
-                <td>
+            <div class="parcours-card">
+                <div class="parcours-name">
                     <g:link controller="parcours" action="show" id="${parcours.id}">
                         ${parcours.name}
                     </g:link>
-                </td>
-                <td>  ${parcours.description }</td>
-                <td>${parcours.author.username}</td>
-            </tr>
+                </div>
+                <div class="parcours-description">${parcours.description}</div>
+                <div class="parcours-author">Author: ${parcours.author.username}</div>
+            </div>
         </g:each>
-
-        </tbody>
-    </table>
+    </div>
 
     <div class="pagination">
         <g:paginate total="${parcoursCount ?: 0}"/>

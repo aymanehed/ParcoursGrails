@@ -9,3 +9,9 @@ signUpButton.addEventListener('click', () => {
 signInButton.addEventListener('click', () => {
     container.classList.remove("right-panel-active");
 });
+
+(function() {
+    // Replace '${usernameParameter ?: 'username'}' with the actual condition
+    const usernameParameter = 'username'; // You should have a value for usernameParameter
+    document.forms['loginForm'].elements[usernameParameter].focus();
+})();

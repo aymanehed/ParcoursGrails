@@ -1,132 +1,36 @@
 <html>
 <head>
-    <meta name="layout" content="main"/>
-    <title><g:message code='springSecurity.login.title'/></title>
-    <style type="text/css" media="screen">
-    #login {
-        margin: 15px 0px;
-        padding: 0px;
-        text-align: center;
-    }
+    <asset:stylesheet src="form.css"/>
+    <asset:javascript src="form.js"/>
+    <title>View Map</title>
+    <asset:link rel="icon" href="favicon.ico" type="image/x-ico"/>
 
-    #login .inner {
-        width: 340px;
-        padding-bottom: 6px;
-        margin: 60px auto;
-        text-align: left;
-        border: 1px solid #aab;
-        background-color: white;
-        -moz-box-shadow: 2px 2px 2px #eee;
-        -webkit-box-shadow: 2px 2px 2px #eee;
-        -khtml-box-shadow: 2px 2px 2px #eee;
-        box-shadow: 2px 2px 2px #eee;
-    }
-
-    #login .inner .fheader {
-        padding: 18px 26px 14px 26px;
-        background-color: #f7f7ff;
-        margin: 0px 0 14px 0;
-        color: #2e3741;
-        font-size: 18px;
-        font-weight: bold;
-    }
-
-    #login .inner .cssform p {
-        clear: left;
-        margin: 0;
-        padding: 4px 0 3px 0;
-        padding-left: 105px;
-        margin-bottom: 20px;
-        height: 1%;
-    }
-
-    #login .inner .cssform input[type="text"] {
-        width: 120px;
-    }
-
-    #login .inner .cssform label {
-        font-weight: bold;
-        float: left;
-        text-align: right;
-        margin-left: -105px;
-        width: 110px;
-        padding-top: 3px;
-        padding-right: 10px;
-    }
-
-    #login #remember_me_holder {
-        padding-left: 120px;
-    }
-
-    #login #submit {
-        margin-left: 15px;
-    }
-
-    #login #remember_me_holder label {
-        float: none;
-        margin-left: 0;
-        text-align: left;
-        width: 200px
-    }
-
-    #login .inner .login_message {
-        padding: 6px 25px 20px 25px;
-        color: #c33;
-    }
-
-    #login .inner .text_ {
-        width: 120px;
-    }
-
-    #login .inner .chk {
-        height: 12px;
-    }
-    </style>
 </head>
 
+
+
 <body>
-
-<div id="login">
-    <div class="inner">
-        <div class="fheader"><g:message code='springSecurity.login.header'/></div>
-        <g:if test='${flash.message}'>
-            <div class="login_message">${flash.message}</div>
-        </g:if>
-
-        <form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm" class="cssform" autocomplete="off">
-            <p>
-                <label for="username"><g:message code='springSecurity.login.username.label'/>:</label>
-                <input type="text" class="text_" name="${usernameParameter ?: 'username'}" id="username"/>
-            </p>
-
-            <p>
-                <label for="password"><g:message code='springSecurity.login.password.label'/>:</label>
-                <input type="password" class="text_" name="${passwordParameter ?: 'password'}" id="password"/>
-            </p>
-
-            <p id="remember_me_holder">
-                <input type="checkbox" class="chk" name="${rememberMeParameter ?: 'remember-me'}" id="remember_me" <g:if test='${hasCookie}'>checked="checked"</g:if>/>
-                <label for="remember_me"><g:message code='springSecurity.login.remember.me.label'/></label>
-            </p>
-            <div class="row button">
-                <input type="submit" id="submit"  value="${message(code: 'springSecurity.login.button')}"/>
-                <div class="signup-link">Not a member? <g:link controller="signup" action="index">Signup now</g:link></div>
-
-            </div>
-
+<div class="container" id="container">
+    <div class="form-container sign-in-container">
+        <form action="${postUrl ?: '/login/authenticate'}" method="POST" id="loginForm"  autocomplete="off">
+            <h1>Sign in</h1>
+            <g:if test='${flash.message}'>
+                <div class="login_message" style="color: red">${flash.message}</div>
+            </g:if>
+            <input type="text" placeholder="Username" name="${usernameParameter ?: 'username'}"   id="username" />
+            <input type="password" placeholder="Password" name="${passwordParameter ?: 'password'}"  id="password" />
+          <button>login</button>
         </form>
     </div>
-</div>
-<script>
-    (function() {
-        document.forms['loginForm'].elements['${usernameParameter ?: 'username'}'].focus();
-    })();
-</script>
-
-<div id="content" role="main">
-    <section class="row colset-2-its">
-
-    </section>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <g:link controller="signup" action="register"> <button class="ghost" id="signUp">Sign Up</button></g:link>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

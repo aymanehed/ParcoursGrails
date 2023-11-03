@@ -2,9 +2,43 @@
   <html lang="en">
   <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_USER')}">
   <head>
- <meta name="layout" content="main"/>
+ <meta name="layout" content="navbar"/>
      <title>Welcome to ViewMap</title>
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
+      <asset:stylesheet src="caroussel.css"/>
+      <asset:javascript src="caroussel.js"/>
   </head>
+      <body>
+      <div class="carousel">
+          <div class="carousel_inner">
+              <div class="carousel_item carousel_item__active">
+                  <asset:image src="img2.jpg" class="carousel_img"/>
+              </div>
+              <div class="carousel_item">
+                  <asset:image src="img4.jpg" class="carousel_img"/>
+              </div>
+              <div class="carousel_item">
+                  <asset:image src="img5.jpg" class="carousel_img"/>
+              </div>
+          </div>
+
+          <div class="carousel_indicator">
+              <button class="carousel_dot carousel_dot__active"></button>
+              <button class="carousel_dot"></button>
+              <button class="carousel_dot"></button>
+          </div>
+
+          <div class="carousel_control">
+              <button class="carousel_button carousel_button__prev">
+                  <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="carousel_button carousel_button__next">
+                  <i class="fas fa-chevron-right"></i>
+              </button>
+          </div>
+      </div>
+
+      </body>
   </g:if>
 <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN')}">
     <head>
@@ -51,6 +85,12 @@
                         <p> Parcours</p>
                     </div>
                     </g:link>
+                    <g:link controller="poi" action="index" >
+                        <div class="nav-option option5">
+                            <asset:image src="pois.png"   class="nav-img" alt="POI" />
+                            <p> POI</p>
+                        </div>
+                    </g:link>
                     <g:link controller="logout" action="index">
                         <div class="nav-option option4">
                         <asset:image src="logout.png"   class="nav-img" alt="Logout"/>
@@ -95,7 +135,8 @@
             <div class="report-container">
                 <div class="report-header">
                     <h1 class="recent-Articles">Recent users</h1>
-                    <g:link controller="user" action="index" class="view" style="width: 65px">View All</g:link>
+                    <g:link controller="user" action="index" class="view" style="  border-radius: 20px;border: 1px solid #3f0097;background-color: #3f0097;color: #FFFFFF;height: 25px;text-align: center;font-size: 12px;font-weight: bold;justify-content: center;letter-spacing: 1px;text-transform: uppercase; transition: transform 80ms ease-in;">
+                        View All</g:link>
                 </div>
 
                 <div class="report-body">
@@ -121,32 +162,4 @@
     <asset:javascript src="script.js"/>
     </body>
 </g:if>
-<g:else>
-
-    <body>
-        <content tag="nav">
-        <g:if test="${session.user == null}">
-            <li class="dropdown">
-                <g:link controller="parcours" action="index">Parcours</g:link>
-            <li class="dropdown">
-                <g:link controller="POI" action="index">Interests</g:link>
-            </li>
-            <li class="dropdown">
-                <g:link controller="profile" action="index">Profile</g:link>
-            </li>
-            <li class="dropdown"> <g:link controller="logout" action="index"> <asset:image src="logout.png" width="18px"/> Logout</g:link></li>
-        </g:if>
-    </content>
-
-
-
-
-
-    <div id="content1" role="main">
-        <section class="row colset-2-its">
-
-        </section>
-    </div>
-    </body>
-</g:else>
   </html>

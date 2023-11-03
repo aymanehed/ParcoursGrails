@@ -1,0 +1,26 @@
+.parcours-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    max-width: 300px;
+    height: 150px;
+    background-color: #f9f9f9;
+}
+
+.parcours-name {
+    font-weight: bold;
+}
+
+.parcours-description {
+    margin-top: 5px;
+}
+
+.parcours-author {
+    color: #666;
+}
+
+.parcours-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
