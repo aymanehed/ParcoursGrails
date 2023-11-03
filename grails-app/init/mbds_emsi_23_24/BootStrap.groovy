@@ -37,7 +37,8 @@ class BootStrap {
                                 // Création de la nouvelle instance de POI
                                 def poiInstance = new POI(name: "Poi n°$poiIdx du parcours $parcoursIdx de $uName",
                                         description: "Une belle description de POI",
-                                        latitude:10, longitude: 10)
+                                        latitude:33.5 + (Math.random() * 0.1),
+                                        longitude: -7.7 + (Math.random() * 0.3))
                                 // Pour chaque POI on ajoute 5 illustrations
                                 (1..5).each {
                                     poiInstance.addToIllustrationList(new Illustration(name: "grails.svg"))
