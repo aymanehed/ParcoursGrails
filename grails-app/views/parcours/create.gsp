@@ -36,9 +36,15 @@
   <label for="description">Description
     <span class="required-indicator">*</span>
   </label><input type="text" name="description" value="" required="" id="description">
-</div><div class="fieldcontain required">
-                </select>
-                </div><div class="fieldcontain">
+</div>
+                    <div class="fieldcontain required">
+                        <label for="author">Author
+                            <span class="required-indicator">*</span>
+                        </label><select name="author.id" required="" id="author">
+                        <option value="${currentuser.id}">${currentuser.username}</option>
+                    </select>
+                      </div>
+                    <div class="fieldcontain">
                 <label for="illustrationList">Illustration List</label>
                     <g:link controller="illustration" action="create" id="${parcours.id}">Add Illustration</g:link>
                     <ul></ul>

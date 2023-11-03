@@ -37,6 +37,7 @@
                                 <span class="required-indicator">*</span>
                             </label><input type="email" name="email" value="" required="" id="email">
                         </div>
+
                             <div class="fieldcontain" style="display: flex">
                             <label for="thumbnail">Thumbnail</label>
                             <input type="file"  name="file" id="thumbnail" />

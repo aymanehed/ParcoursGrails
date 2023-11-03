@@ -1,7 +1,6 @@
 <%@ page import="com.mbds.parcours.Parcours" %>
 <!DOCTYPE html>
 <html>
-<<<<<<< HEAD
     <head>
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'POI.label', default: 'POI')}" />
@@ -39,7 +38,6 @@
             </g:form>
         </div>
     </body>
-=======
 <head>
     <meta name="layout" content="main"/>
     <g:set var="entityName" value="${message(code: 'POI.label', default: 'POI')}"/>
@@ -129,5 +127,4 @@
     </g:form>
 </div>
 </body>
->>>>>>> 42ed214c657b69775f90b8216ed7477dcb3faf8b
 </html>

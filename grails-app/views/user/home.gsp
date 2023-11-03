@@ -86,7 +86,7 @@
                         <h2 class="topic-heading">${poiCount}</h2>
                         <h2 class="topic">POI</h2>
                     </div>
-                    <asset:image src="poi.png"   class="nav-img" alt="poi"/>
+                    <asset:image src="pois.png"   class="nav-img" alt="poi"/>
                 </div>
 
 
@@ -102,12 +102,14 @@
                     <div class="report-topic-heading">
                         <h3 class="t-op">Username</h3>
                         <h3 class="t-op">Email</h3>
+                        <h3 class="t-op">Role</h3>
                     </div>
     <g:each in="${userList}" var="user">
                     <div class="items">
                         <div class="item1">
                             <h3 class="t-op-nextlvl">${user.username}</h3>
-                            <h3 class="t-op-nextlvl">${user.email}</h3>
+                            <h3 class="t-op-nextlvl">${user.email}</h3
+                            <h3 class="t-op-nextlvl label-tag">${user.getAuthorities().authority[0]}</h3>
                         </div>
         </g:each>
                     </div>

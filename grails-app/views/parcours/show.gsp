@@ -63,12 +63,7 @@
                      </li>
 
                 </ol>
-                <form action="/parcours/delete/1" method="post"><input type="hidden" name="_method" value="DELETE" id="_method">
-                    <fieldset class="buttons">
-                        <a href="/parcours/edit/1" class="edit">Edit</a>
-                        <input class="delete" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
-                    </fieldset>
-                </form>
+
             </div>
 
 

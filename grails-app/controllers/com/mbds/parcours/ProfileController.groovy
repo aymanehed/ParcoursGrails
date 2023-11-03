@@ -9,7 +9,7 @@ import static org.springframework.http.HttpStatus.OK
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class ProfileController {
     SpringSecurityService springSecurityService
-    UserService UserService
+    UserService userService
 
     static allowedMethods = [save: "POST", delete: "DELETE"]
 
@@ -19,9 +19,9 @@ class ProfileController {
     def index() {
         def currentUserID = springSecurityService.principal.id as Long
         //return the current user's profile
-        def currentUser = UserService.get(currentUserID)
+        def currentUser = userService.get(currentUserID)
 
-        print(currentUser)
+        print(currentUser.thumbnail)
         render(view: 'index', model: [currentUser: currentUser])
 
     }
@@ -31,9 +31,10 @@ class ProfileController {
     def edit() {
         def currentUserID = springSecurityService.principal.id as Long
         //return the current user's profile
-        def currentUser = UserService.get(currentUserID)
+        def currentUser = userService.get(currentUserID)
 
-        print(currentUser)
+
+        print(currentUser.thumbnail)
         render(view: 'edit', model: [user: currentUser])
 
     }
@@ -46,7 +47,24 @@ class ProfileController {
         }
 
         try {
-            UserService.save(user)
+            def fileData = request.getFile("file")
+            if(fileData!= null && ! fileData.isEmpty()) {
+                def savedPath = new File("C:\\Users\\lenovo\\Desktop\\grails_emsi_mbds_23_24\\grails-app\\assets\\images\${fileData.originalFilename}")
+
+                def savedFile = new File(savedPath as String)
+                fileData.transferTo(savedFile)
+
+                def illustration = new Illustration()
+                illustration.name = fileData.originalFilename
+                illustration.save(flush: true)
+                user.thumbnail = illustration
+            }
+            userService.save(user)
+            def roleUser = Role.findByAuthority("ROLE_USER")
+            if(!roleUser){
+                roleUser = new Role(authority: "ROLE_USER").save()
+            }
+            UserRole.create(user, roleUser, true)
         } catch (ValidationException e) {
             respond user.errors, view:'edit'
             return

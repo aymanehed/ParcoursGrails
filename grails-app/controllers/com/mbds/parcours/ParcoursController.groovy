@@ -1,5 +1,6 @@
 package com.mbds.parcours
 
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 
@@ -9,9 +10,8 @@ import static org.springframework.http.HttpStatus.*
 
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class ParcoursController {
-
+    SpringSecurityService springSecurityService
     ParcoursService parcoursService
-
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
@@ -22,7 +22,8 @@ class ParcoursController {
         respond parcoursService.get(id)
     }
     def create() {
-        respond new Parcours(params)
+     def CurrentUser=springSecurityService.currentUser
+        respond new Parcours(params),model: [currentuser:CurrentUser]
     }
     def save(Parcours parcours) {
         if (parcours == null) {
@@ -31,6 +32,7 @@ class ParcoursController {
         }
 
         try {
+
             parcoursService.save(parcours)
         } catch (ValidationException e) {
             respond parcours.errors, view:'create'

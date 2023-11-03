@@ -14,6 +14,7 @@ class UrlMappings {
         "/parcours/List"(controller:"parcours",action:  "index")
          "/root"(controller:"user",action:"index")
         "/profile"(controller: "profile", action:"index")
+        "/profile/edit"(controller: "profile", action:"edit")
         "/Signup"(controller: "signup", action:"index")
         "/home"(controller: "user", action:"home")
         "500"(view:'/error')
