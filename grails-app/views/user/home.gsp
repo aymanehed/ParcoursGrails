@@ -66,35 +66,35 @@
         <div class="navcontainer">
             <nav class="nav">
                 <div class="nav-upper-options">
-                    <g:link controller="user" action="home">
+                    <g:link controller="user" action="home" class="no-underline">
                     <div class="nav-option option1">
                         <asset:image src="dashboard.png"
                                 class="nav-img"
                                 alt="dashboard"  />
-                        <p> Dashboard</p>
+                         Dashboard
                     </div></g:link>
                     <g:link controller="user" action="index">
                     <div class="nav-option option2">
                         <asset:image src="users.png"   class="nav-img" alt="users"/>
-                        <p> Users</p>
+                        Users
                     </div>
                     </g:link>
                     <g:link controller="parcours" action="index" >
                     <div class="nav-option option3">
                         <asset:image src="parcours.png"   class="nav-img" alt="Parcours" />
-                        <p> Parcours</p>
+                        Parcours
                     </div>
                     </g:link>
                     <g:link controller="poi" action="index" >
                         <div class="nav-option option5">
                             <asset:image src="pois.png"   class="nav-img" alt="POI" />
-                            <p> POI</p>
+                             POI
                         </div>
                     </g:link>
                     <g:link controller="logout" action="index">
                         <div class="nav-option option4">
                         <asset:image src="logout.png"   class="nav-img" alt="Logout"/>
-                        <p> Logout</p>
+                        Logout
                     </div>
                     </g:link>
                 </div>
@@ -135,7 +135,7 @@
             <div class="report-container">
                 <div class="report-header">
                     <h1 class="recent-Articles">Recent users</h1>
-                    <g:link controller="user" action="index" class="view" style="  border-radius: 20px;border: 1px solid #3f0097;background-color: #3f0097;color: #FFFFFF;height: 25px;text-align: center;font-size: 12px;font-weight: bold;justify-content: center;letter-spacing: 1px;text-transform: uppercase; transition: transform 80ms ease-in;">
+                    <g:link controller="user" action="index" class="view" style="	text-decoration: none;  border-radius: 20px;border: 1px solid #3f0097;background-color: #3f0097;color: #FFFFFF;height: 25px;text-align: center;font-size: 12px;font-weight: bold;justify-content: center;letter-spacing: 1px;text-transform: uppercase; transition: transform 80ms ease-in;">
                         View All</g:link>
                 </div>
 

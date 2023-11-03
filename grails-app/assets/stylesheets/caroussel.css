@@ -185,7 +185,9 @@
     right: 20px;
     z-index: 1;
 }
-
+a.no-underline {
+    text-decoration: none;
+}
 
 #buttonViewAll{
     border-radius: 20px;

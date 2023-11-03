@@ -4,7 +4,9 @@
     <meta name="layout" content="main" />
     <g:set var="entityName" value="${message(code: 'parcours.label', default: 'Parcours')}" />
     <title><g:message code="default.create.label" args="[entityName]" /></title>
+<style>link.no-underline {text-decoration: none;}</style>
 </head>
+
 <body>
 <a href="#create-parcours" class="skip" tabindex="-1">
     <g:message code="default.link.skip.label" default="Skip to content&hellip;" />
@@ -48,12 +50,12 @@
             <select name="author.id"  style="padding-right: 10px" required="required" id="author">
                 <option value="${currentuser.id}">${currentuser.username}</option>
             </select></div>
-            <div><label for="illustrationList">Illustration List</label>
-            <g:link controller="illustration" action="create" id="${parcours.id}">Add Illustration</g:link></div>
-            <div> <label for="poiList">Poi List</label>
-  <g:link controller="POI" action="create" id="${parcours.id}" >Add POI</g:link>
+            <div style="text-decoration: none" ><label for="illustrationList">Illustration List</label>
+            <g:link controller="illustration" action="create" id="${parcours.id} " >Add Illustration</g:link></div>
+            <div style="margin: 20px; padding-right: 20px;  " > <label for="poiList">Poi List</label>
+  <g:link controller="POI" action="create" id="${parcours.id}" style="margin:28.8px"  > Add POI</g:link>
                 </div>
-            <fieldset class="buttons">
+            <fieldset class="buttons" style="margin-top: 80px ;margin-right: -60px">
                 <button type="submit" name="create" class="save">
                     ${message(code: 'default.button.create.label', default: 'Create')}
                 </button>

@@ -383,7 +383,7 @@ body, html {
 
 a {
     color: #2559a7;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 a:hover {
@@ -498,7 +498,7 @@ h8 {
 }
 
 #footer .colset-3-footer .col-1 ul li a:hover, #footer .colset-3-footer .col-2 ul li a:hover, #footer .colset-3-footer .col-3 ul li a:hover {
-    text-decoration: underline
+    text-decoration: none
 }
 
 #footer .second a {
