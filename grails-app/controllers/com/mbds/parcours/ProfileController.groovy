@@ -81,6 +81,24 @@ class ProfileController {
 
 
 
+def MesParcours(){
+    def currentUserID = springSecurityService.principal.id as Long
+    //return the current user's profile
+    def currentUser = userService.get(currentUserID)
+    def parcours = currentUser.parcoursList
+    print(parcours)
+    render(view: 'MesParcours', model: [parcours: parcours])
+}
+
+    def MesPois(){
+        def currentUserID = springSecurityService.principal.id as Long
+        //return the current user's profile
+        def currentUser = userService.get(currentUserID)
+        def parcours = currentUser.parcoursList
+        def poi = currentUser.parcoursList.poiList
+        print(poi)
+        render(view: 'MesPois', model: [poi: poi,parcours: parcours])
+    }
 
 
 

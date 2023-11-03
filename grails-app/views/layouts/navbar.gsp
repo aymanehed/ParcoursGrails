@@ -23,10 +23,10 @@
                     <g:link controller="user" action="home"> Home</g:link>
                 </li>
                 <li>
-                    <g:link controller="parcours" action="index">MesParcours</g:link>
+                    <g:link controller="profile" action="MesParcours">MesParcours</g:link>
                 </li>
                 <li>
-                    <g:link controller="POI" action="index"> MesPois</g:link>
+                    <g:link controller="profile" action="MesPois"> MesPois</g:link>
                 </li>
                 <li>
                     <g:link controller="profile" action="index">MyProfile</g:link>

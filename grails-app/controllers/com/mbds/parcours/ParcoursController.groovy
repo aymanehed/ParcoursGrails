@@ -12,7 +12,8 @@ import static org.springframework.http.HttpStatus.*
 class ParcoursController {
     SpringSecurityService springSecurityService
     ParcoursService parcoursService
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    UserService userService
+    static allowedMethods = [save: "POST", delete: "DELETE"]
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond parcoursService.list(params), model:[parcoursCount: parcoursService.count()]
@@ -48,7 +49,8 @@ class ParcoursController {
         }
     }
     def edit(Long id) {
-        respond parcoursService.get(id)
+        def CurrentUser=springSecurityService.currentUser
+        respond parcoursService.get(id),model: [currentuser:CurrentUser,userList: userService.list(params)]
     }
     def update(Parcours parcours) {
         if (parcours == null) {

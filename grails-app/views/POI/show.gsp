@@ -67,6 +67,27 @@
                         </g:link>
                     </li>
                 </g:each>
+%{--=======--}%
+%{--    <head>--}%
+%{--        <meta name="layout" content="main" />--}%
+%{--        <g:set var="entityName" value="${message(code: 'POI.label', default: 'POI')}" />--}%
+%{--        <title><g:message code="default.show.label" args="[entityName]" /></title>--}%
+%{--    </head>--}%
+%{--    <body>--}%
+%{--        <a href="#show-POI" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>--}%
+%{--        <div class="nav" role="navigation">--}%
+%{--            <ul>--}%
+%{--                <li><a class="home" href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>--}%
+%{--<g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_USER')}">--}%
+%{--    <li><g:link class="list" controller="profile" action="MesParcours">Mes Parcours</g:link></li>--}%
+%{--</g:if>--}%
+%{--<g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN')}">--}%
+%{--    <li><g:link class="list" controller="parcours" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>--}%
+%{--</g:if>--}%
+
+%{--                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>--}%
+%{--                <li> <g:link controller="logout" action="index"> <asset:image src="logout.png" width="18px"/> Logout</g:link> </li>--}%
+%{-->>>>>>> 99e39686c0d0b44b5341408ce7b585d55f4aa936--}%
             </ul>
         </li>
 

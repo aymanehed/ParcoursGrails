@@ -12,6 +12,8 @@ class UrlMappings {
         "/"(view:"/index")
         "/POI/index"(controller:"poi",action:"index")
         "/parcours/List"(controller:"parcours",action:  "index")
+        "/Mesparcours"(controller:"profile",action:"MesParcours")
+        "/MesPOI"(controller:"profile",action:"MesPois")
          "/root"(controller:"user",action:"index")
         "/profile"(controller: "profile", action:"index")
         "/profile/edit"(controller: "profile", action:"edit")

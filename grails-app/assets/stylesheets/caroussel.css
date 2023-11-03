@@ -188,7 +188,9 @@
 a.no-underline {
     text-decoration: none;
 }
-
+html {
+    overflow: hidden;
+}
 #buttonViewAll{
     border-radius: 20px;
     border: 1px solid #3f0097;

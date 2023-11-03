@@ -49,7 +49,6 @@
     <g:link controller="parcours" action="show" id="${poiInstance?.parcours?.id}">Back to Parcours</g:link>
 
     <div id="map" class="form-input-inline" style="width: 100%; height: 300px;"></div>
-</div>
 <button class="form-button" type="submit">Submit</button>
 </body>
 </html>
