@@ -6,9 +6,8 @@ import static org.springframework.http.HttpStatus.*
 
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class POIController {
-
     POIService POIService
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [save: "POST", delete: "DELETE"]
     @Secured(['permitAll'])
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)

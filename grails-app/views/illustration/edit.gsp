@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="layout" content="navbar" />
+        <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'illustration.label', default: 'Illustration')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
     </head>
@@ -26,7 +26,7 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form resource="${this.illustration}" method="PUT">
+            <g:form resource="${this.illustration}" method="post" controller="illustration" action="update">
                 <g:hiddenField name="version" value="${this.illustration?.version}" />
                 <fieldset class="form">
                     <f:all bean="illustration"/>

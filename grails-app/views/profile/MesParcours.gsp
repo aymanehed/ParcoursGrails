@@ -14,7 +14,7 @@
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
+        <li><g:link class="create" controller="parcours" action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
         <li> <g:link controller="logout" action="index"> <asset:image src="logout.png" width="18px"/> Logout</g:link> </li>
     </ul>
 </div>
@@ -26,14 +26,14 @@
     </g:if>
 
     <div class="parcours-grid">
-        <g:each in="${parcoursList}" var="parcours">
+        <g:each in="${parcours}" var="parcour">
             <div class="parcours-card">
                 <div class="parcours-name">
-                    <g:link controller="parcours" action="show" id="${parcours.id}">
+                    <g:link controller="parcours" action="show" id="${parcour.id}">
                         ${parcours.name}
                     </g:link>
                 </div>
-                <div class="parcours-description">${parcours.description}</div>
+                <div class="parcours-description">${parcour.description}</div>
             </div>
         </g:each>
     </div>

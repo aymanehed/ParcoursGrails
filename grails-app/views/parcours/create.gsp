@@ -4,7 +4,6 @@
     <meta name="layout" content="main" />
     <g:set var="entityName" value="${message(code: 'parcours.label', default: 'Parcours')}" />
     <title><g:message code="default.create.label" args="[entityName]" /></title>
-<style>link.no-underline {text-decoration: none;}</style>
 </head>
 
 <body>
@@ -14,9 +13,12 @@
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/home')}"><g:message code="default.home.label" /></a></li>
-        <li><g:link class="list" action="index">
-            <g:message code="default.list.label" args="[entityName]" />
-        </g:link></li>
+        <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_USER')}">
+            <li><g:link class="list" controller="profile" action="MesParcours">Mes Parcours</g:link></li>
+        </g:if>
+        <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN')}">
+            <li><g:link class="list" controller="parcours" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+        </g:if>
         <li>
             <g:link controller="logout" action="index">
                 <asset:image src="logout.png" width="18px" />
@@ -46,8 +48,8 @@
     <div >Description  <span class="required">*</span></span>
             <input type="text"  name="description"  id="description"  style="height: 100px; width: 70%"/></div>
 
-            <div style="margin: 30px "><span class="lname">Author</span>
-            <select name="author.id"  style="padding-right: 10px" required="required" id="author">
+            <div style="margin: 30px "><span class="lname" hidden="">Author</span>
+            <select hidden="" name="author.id"  style="padding-right: 10px" required="required" id="author">
                 <option value="${currentuser.id}">${currentuser.username}</option>
             </select></div>
             <div style="text-decoration: none" ><label for="illustrationList">Illustration List</label>

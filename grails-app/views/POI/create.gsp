@@ -6,6 +6,17 @@
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
+    <div class="nav" role="navigation">
+        <ul>
+
+            <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_USER')}">
+                <li><g:link class="home" controller="profile" action="MesPois" >MesPOI</g:link></li>
+            </g:if>
+            <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN')}">
+                <li><g:link class="home" controller="POI"  action="index" >ListPOI</g:link></li>
+            </g:if>
+
+        </ul></div>
         <a href="#create-POI" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 
         <div id="create-POI" class="content scaffold-create" role="main">
