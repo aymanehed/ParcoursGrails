@@ -13,8 +13,8 @@ class POI {
     static constraints = {
         name blank: false, nullable: false
         description blank: false, nullable: false
-        latitude nullable: false
-        longitude nullable: false
+        latitude nullable: true
+        longitude nullable: true
         parcours nullable: false
     }
 

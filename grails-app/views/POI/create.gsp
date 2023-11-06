@@ -13,20 +13,21 @@
 </head>
 
 <body>
-<div class="form-container">
-    <div class="nav" role="navigation">
-        <ul>
+<div class="nav" role="navigation">
+    <ul>
 
-            <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_USER')}">
-                <li><g:link class="home" controller="profile" action="MesPois">MesPOI</g:link></li>
-            </g:if>
-            <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN')}">
-                <li><g:link class="home" controller="POI" action="index">ListPOI</g:link></li>
-            </g:if>
-        </ul></div>
+        <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_USER')}">
+            <li><g:link class="home" controller="profile" action="MesPois">MesPOI</g:link></li>
+        </g:if>
+        <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN')}">
+            <li><g:link class="home" controller="POI" action="index">ListPOI</g:link></li>
+        </g:if>
+    </ul></div>
+
+<div class="form-container">
 
     <h1>Créer un nouveau POI</h1>
-    <g:form controller="POI" action="save" method="POST" enctype="multipart/form-data">
+    <g:form controller="POI" action="create" method="POST" enctype="multipart/form-data">
         <label for="name">Name:</label>
         <g:textField name="name" required="true"/>
 
@@ -42,13 +43,10 @@
         <label for="parcours">Parcours:</label>
         <g:select name="parcours.id" from="${Parcours.list()}" optionKey="id" optionValue="name"
                   required="true"/>
+        <g:submitButton name="Create POI" controller="POI" action="create"/>
 
-        <g:submitButton name="Create POI"/>
     </g:form>
 
-    <g:link controller="parcours" action="show" id="${poiInstance?.parcours?.id}">Back to Parcours</g:link>
-
     <div id="map" class="form-input-inline" style="width: 100%; height: 300px;"></div>
-<button class="form-button" type="submit">Submit</button>
 </body>
 </html>
