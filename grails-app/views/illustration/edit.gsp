@@ -26,10 +26,15 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form resource="${this.illustration}" method="post" controller="illustration" action="update">
+            <g:form id="${illustration.id}" method="post" controller="illustration" action="update" enctype="multipart/form-data">
                 <g:hiddenField name="version" value="${this.illustration?.version}" />
                 <fieldset class="form">
-                    <f:all bean="illustration"/>
+                    <div class="image-upload-container">
+                        <div class="file-drop-area">
+                            <span class="file-label">Drop file here or click to upload</span>
+                            <input type="file" name="file" class="drop-zone__input">
+                        </div>
+                    </div>
                 </fieldset>
                 <fieldset class="buttons">
                     <input class="save" type="submit" value="${message(code: 'default.button.update.label', default: 'Update')}" />
