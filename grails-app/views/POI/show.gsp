@@ -5,6 +5,9 @@
     <g:set var="entityName" value="${message(code: 'POI.label', default: 'POI')}"/>
     <title><g:message code="default.show.label" args="[entityName]"/></title>
     <asset:stylesheet src="ShowPoi.css"/>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAP18kvzxfaxA3_LHZlN_kKdc8u0qmcaE0&callback=initMap"
+            async defer></script>
 </head>
 
 <body>
@@ -39,26 +42,14 @@
         </li>
 
         <li class="fieldcontain">
-            <span id="latitude-label" class="property-label">Latitude</span>
-
-            <div class="property-value" aria-labelledby="latitude-label">${POI.latitude}</div>
-        </li>
-
-        <li class="fieldcontain">
-            <span id="longitude-label" class="property-label">Longitude</span>
-
-            <div class="property-value" aria-labelledby="longitude-label">${POI.longitude}</div>
-        </li>
-
-        <li class="fieldcontain">
             <span id="parcours-label" class="property-label">Parcours</span>
 
-            <div class="property-value" aria-labelledby="parcours-label"><a
-                    href="/parcours/show/1"></a></div>
+            <div class="property-value" aria-labelledby="parcours-label">
+                <g:link controller="parcours" action="show" id="${POI.parcours.id}">${POI.parcours.name}</g:link>
+            </div>
         </li>
 
         <li class="fieldcontain">
-            <span id="illustrationList-label" class="property-label">Illustration List</span>
             <ul class="image-list">
                 <g:each in="${POI.illustrationList}" var="illustration">
                     <li class="image-item">
@@ -71,6 +62,7 @@
         </li>
 
     </ol>
+    <div id="map" class="form-input-inline" style="width: 100%; height: 300px;"></div>
     <g:form resource="${this.POI}" method="DELETE">
         <fieldset class="buttons">
             <g:link class="edit" action="edit" resource="${this.POI}"><g:message code="default.button.edit.label"
@@ -81,5 +73,19 @@
         </fieldset>
     </g:form>
 </div>
+<script>
+    function initMap() {
+        const myLatLng = {lat: ${POI.latitude}, lng: ${POI.longitude}};
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 12,
+            center: myLatLng,
+        });
+        new google.maps.Marker({
+            position: myLatLng,
+            map,
+            title: "${POI.name}",
+        });
+    }
+</script>
 </body>
 </html>

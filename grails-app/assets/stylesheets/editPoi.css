@@ -82,25 +82,26 @@ input[type="submit"] {
     color: red;
 }
 
-ul.image-list {
+/* Image list styles */
+.image-list {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center-align the images */
 }
 
 .image-item {
-    width: 100px; /* Adjust the width as needed */
-    margin: 5px;
-    text-align: center; /* Center-align individual images */
-}
-
-.image-item a {
-    display: block;
-    text-decoration: none;
+    margin-right: 10px;
+    margin-bottom: 10px;
 }
 
 .image-item img {
-    max-width: 100%;
+    max-width: 100px;
     height: auto;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .content {
+        padding: 10px;
+    }
 }
