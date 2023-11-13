@@ -20,6 +20,7 @@ spring:
         template:
             check-template-location: false
 
+
 # Spring Actuator Endpoints are Disabled by Default
 endpoints:
     enabled: false

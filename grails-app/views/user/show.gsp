@@ -4,6 +4,7 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
+    <asset:stylesheet src="UserShowForAdmin.css"/>
     </head>
     <body>
         <a href="#show-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -13,7 +14,9 @@
                 <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             -->
+                <li><a class="home" href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
                 <li><g:link controller="logout" action="index"> <asset:image src="logout.png" width="18px"/> Logout</g:link></li>
+
             </ul>
         </div>
         <div id="show-user" class="content scaffold-show" role="main">
@@ -52,7 +55,7 @@
                     <span id="parcoursList-label" class="property-label">Parcours List</span>
                     <div class="property-value" aria-labelledby="parcoursList-label"><ul>
                             <g:each in="${user.parcoursList}" var="c">
-                                <li><g:link controller="parcours" action="show" id="${c.id}">${c?.name}</g:link></li>
+                                <li style="list-style: none"><g:link controller="parcours" action="show" id="${c.id}">${c?.name}</g:link></li>
                             </g:each>
                     </ul></div>
                 </li>

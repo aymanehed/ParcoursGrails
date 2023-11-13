@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="main"/>
-    <g:set var="entityName" value="${message(code: 'user.label', default: 'User')}"/>
-    <title><g:message code="default.list.label" args="[entityName]"/></title>
+    <meta name="layout" content="main" />
+    <title>View Map</title>
+    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
+<asset:stylesheet src="UserIndex.css"/>
 </head>
 
 <body>
-<a href="#list-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-
 <div class="nav" role="navigation">
     <ul>
-        <li> <g:link class="create" action="create"><g:message code="default.new.label"
-                                                              args="[entityName]"/></g:link></li>
+        <li><a class="home" href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
+        <li> <g:link class="create" action="create">New User</g:link></li>
         <li><g:link controller="logout" action="index"> <asset:image src="logout.png" width="18px"/> Logout</g:link></li>
     </ul>
 </div>
 
 <div id="list-user" class="content scaffold-list" role="main">
-    <h1><g:message code="default.list.label" args="[entityName]"/></h1>
+    <h2 style="padding-left:20px  ">User List</h2>
     <g:if test="${flash.message}">
         <div class="message" role="status">${flash.message}</div>
     </g:if>
     <table>
         <thead>
         <tr>
-            <th class="sortable"><a href="/user/index?sort=username&amp;max=10&amp;order=asc">Username</a></th>
-            <th class="sortable"><a href="/user/index?sort=email&amp;max=10&amp;order=asc">Email</a></th>
+            <th class="sortable"><a href="/user/index?sort=username&amp;max=10&amp;order=asc" id="a">Username</a></th>
+            <th class="sortable"><a href="/user/index?sort=email&amp;max=10&amp;order=asc" id="a">Email</a></th>
             <th>Thumbnail</th>
             <th>Role</th>
         </tr>
@@ -34,7 +33,7 @@
         <tbody>
         <g:each in="${userList}" var="user">
             <tr>
-                <td>
+                <td style>
                     <g:link controller="user" action="show" id="${user.id}">
                         <g:fieldValue field="username" bean="${user}"/>
                     </g:link>

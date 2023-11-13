@@ -1,0 +1,112 @@
+/* Container for the user details */
+.content {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+
+/* Page title */
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* User details list */
+.property-list.user {
+    list-style: none;
+    padding: 0;
+}
+
+.fieldcontain {
+    margin: 20px 0;
+}
+
+/* Label for each field */
+.property-label {
+    font-weight: bold;
+    color: #555;
+    font-size: 16px;
+}
+
+/* Value for each field */
+.property-value {
+    font-size: 18px;
+}
+
+/* Style the thumbnail image */
+.property-value img {
+    max-width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin-top: 10px;
+}
+
+/* Style the "Edit" and "Delete" buttons */
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.edit,
+.delete {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit {
+    background-color: #007bff;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.delete {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+/* Links */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Style for navigation */
+
+
+.nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+/* Add more styles as needed to achieve your desired look and feel */
+
+/* Media query for responsiveness */
+@media (max-width: 600px) {
+    .content {
+        padding: 10px;
+    }
+
+    .property-label {
+        font-size: 14px;
+    }
+
+    .property-value {
+        font-size: 16px;
+    }
+}
