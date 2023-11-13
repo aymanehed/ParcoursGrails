@@ -1,7 +1,9 @@
-<%@ page import="com.mbds.parcours.Parcours" %>
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="layout" content="main"/>
+    <g:set var="entityName" value="${message(code: 'POI.label', default: 'POI')}"/>
+    <title><g:message code="default.create.label" args="[entityName]"/></title>
     <meta name="layout" content="main"/>
     <g:set var="entityName" value="${message(code: 'POI.label', default: 'POI')}"/>
     <title><g:message code="default.create.label" args="[entityName]"/></title>
@@ -15,38 +17,40 @@
 <body>
 <div class="nav" role="navigation">
     <ul>
-
         <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_USER')}">
             <li><g:link class="home" controller="profile" action="MesPois">MesPOI</g:link></li>
         </g:if>
         <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN')}">
             <li><g:link class="home" controller="POI" action="index">ListPOI</g:link></li>
         </g:if>
-    </ul></div>
+        <li> <g:link controller="logout" action="index"> <asset:image src="logout.png" width="18px"/> Logout</g:link> </li>
+    </ul>
+</div>
 
 <div class="form-container">
-
     <h1>Créer un nouveau POI</h1>
-    <g:form controller="POI" action="create" method="POST" enctype="multipart/form-data">
+    <g:form controller="POI" action="save" method="POST" enctype="multipart/form-data">
         <label for="name">Name:</label>
         <g:textField name="name" required="true"/>
 
         <label for="description">Description:</label>
         <g:textArea name="description" required="true" rows="4"/>
 
-        <label for="latitude">Latitude:</label>
-        <g:textField id="lat" name="latitude" required="true" type="number" step="any"/>
+        <label for="latitude" hidden="">Latitude:</label>
+        <g:textField id="lat"  hidden="" name="latitude" required="true" type="number" step="any"/>
 
-        <label for="longitude">Longitude:</label>
-        <g:textField id="lng" name="longitude" required="true" type="number" step="any"/>
+        <label for="longitude" hidden="">Longitude:</label>
+        <g:textField  hidden="" id="lng" name="longitude" required="true" type="number" step="any"/>
 
         <label for="parcours">Parcours:</label>
-        <g:select name="parcours.id" from="${Parcours.list()}" optionKey="id" optionValue="name"
+        <g:select name="parcours.id" from="${ParcoursList}" optionKey="id" optionValue="name"
                   required="true"/>
+        <div id="map" class="form-input-inline" style="width: 100%; height: 300px;"></div>
         <g:submitButton name="Create POI" controller="POI" action="create"/>
 
     </g:form>
+</div>
 
-    <div id="map" class="form-input-inline" style="width: 100%; height: 300px;"></div>
+
 </body>
 </html>

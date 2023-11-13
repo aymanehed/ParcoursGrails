@@ -16,8 +16,6 @@ class UserController {
         params.max = Math.min(max ?: 10, 100)
         respond userService.list(params), model:[userCount: userService.count()]
     }
-
-
     def show(Long id) {
         respond userService.get(id)
     }
@@ -174,7 +172,14 @@ class UserController {
         redirect(action: "edit", id: userInstance.id)
     }
 
+    @Secured('ROLE_ADMIN')
+    def assignParcoursModerator(Long parcoursId, Long moderatorId) {
+        def parcours = parcoursService.get(parcoursId)
+        def moderator = userService.get(moderatorId)
+        parcours.moderator = moderator
+        parcours.save(flush: true)
 
-
-
+        flash.message = "Parcours assigned to moderator successfully."
+        redirect action: "home" // Redirect to a suitable page
+    }
 }

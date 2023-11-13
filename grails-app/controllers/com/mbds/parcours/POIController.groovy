@@ -6,6 +6,7 @@ import static org.springframework.http.HttpStatus.*
 
 @Secured(['ROLE_ADMIN','ROLE_USER'])
 class POIController {
+    ParcoursService parcoursService
     POIService POIService
     static allowedMethods = [save: "POST", delete: "DELETE"]
     @Secured(['permitAll'])
@@ -20,7 +21,7 @@ class POIController {
     }
 
     def create() {
-        respond new POI(params)
+        respond new POI(params), model:[ParcoursList: parcoursService.list()]
     }
 
     def save(POI POI) {
@@ -30,7 +31,9 @@ class POIController {
         }
 
         try {
+            print(POI.latitude + " " + POI.longitude)
             POIService.save(POI)
+
         } catch (ValidationException e) {
             respond POI.errors, view:'create'
             return

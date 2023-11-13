@@ -4,7 +4,7 @@
     <meta name="layout" content="main"/>
     <g:set var="entityName" value="${message(code: 'parcours.label', default: 'Parcours')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
-    <asset:stylesheet src="parcours_card.css"/>
+    <asset:stylesheet src="parcoursindex.css"/>
 </head>
 
 <body>
@@ -30,7 +30,7 @@
             <div class="parcours-card">
                 <div class="parcours-name">
                     <g:link controller="parcours" action="show" id="${parcour.id}">
-                        ${parcours.name}
+                        ${parcour.name}
                     </g:link>
                 </div>
                 <div class="parcours-description">${parcour.description}</div>

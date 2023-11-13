@@ -6,7 +6,6 @@ import grails.gorm.services.Service
 interface UserService {
 
     User get(Serializable id)
-
     List<User> list(Map args)
 
     Long count()

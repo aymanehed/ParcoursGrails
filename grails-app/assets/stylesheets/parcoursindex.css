@@ -1,0 +1,30 @@
+/* Card-specific styles for the HTML view */
+.parcours-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.parcours-card {
+    flex: 0 0 calc(33.33% - 20px); /* Three cards per row with some spacing */
+    margin: 10px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    transition: transform 0.2s;
+}
+
+.parcours-name {
+    font-size: 20px;
+}
+
+.parcours-description {
+    margin: 10px 0;
+}
+
+/* Add hover effect to parcours-card */
+.parcours-card:hover {
+    transform: scale(1.05); /* Scale the card slightly on hover */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Increase box shadow on hover */
+}

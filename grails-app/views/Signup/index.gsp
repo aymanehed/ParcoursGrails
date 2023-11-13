@@ -13,11 +13,7 @@
             <h1>Create Account</h1>
 
             <g:if test="${flash.message}">
-                <% def message = flash.message %>
-                <div class="signup_message" style="color: red">${message}</div>
-                <%
-                    flash.message = null // Clear the flash message
-                %>
+                <div class="signup_message" style="color: red">${flash.message}</div>
             </g:if>
             <input type="text" placeholder="Name" name="${usernameParameter ?: 'username'}"  id="username" />
             <input type="email" placeholder="Email"  name="email" id="email" />

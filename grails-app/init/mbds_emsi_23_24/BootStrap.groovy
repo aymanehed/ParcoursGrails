@@ -8,7 +8,6 @@ class BootStrap {
         // Création de deux role, Admin et User
         def roleAdmin = new Role(authority: 'ROLE_ADMIN').save()
         def roleUser = new Role(authority: 'ROLE_USER').save()
-
         // Création du compte administrateur
         def userAdmin = new User(username: "admin", password: "admin", email: "admin@parcours.com").save()
         // Association du compte administrateur avec le role admin

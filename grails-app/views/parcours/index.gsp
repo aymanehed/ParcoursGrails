@@ -4,7 +4,7 @@
     <meta name="layout" content="main"/>
     <g:set var="entityName" value="${message(code: 'parcours.label', default: 'Parcours')}"/>
     <title><g:message code="default.list.label" args="[entityName]"/></title>
-    <asset:stylesheet src="parcours_card.css"/>
+    <asset:stylesheet src="parcoursindex.css"/>
 </head>
 
 <body>

@@ -15,7 +15,8 @@ class SignupController {
     }
     def register() {
             // Handle the registration form submission
-            def user = new User(params)
+
+        def user = new User(params)
             try {
                 userService.save(user)
                 // Registration successful
@@ -27,7 +28,6 @@ class SignupController {
                 UserRole.create(user, roleUser, true)
                 redirect controller: "login", action: "auth" // Redirect to the login page
             } catch (ValidationException e) {
-                flash.message = 'Registration failed. Please try again.'
                 render view: 'index' // Render the registration form again in case of errors
             }
         }

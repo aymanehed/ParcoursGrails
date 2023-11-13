@@ -1,20 +1,20 @@
-function initMap(callback) {
+function initMap() {
     const options = {
         zoom: 8,
-        center: {lat: 33.589886, lng: -7.603869}
-    }
-    const Map = new google.maps.Map(document.getElementById("map"), options);
+        center: { lat: 33.589886, lng: -7.603869 }
+    };
+    const map = new google.maps.Map(document.getElementById("map"), options);
     let currentMarker = new google.maps.Marker({
-        map: Map,
+        map: map,
         position: options.center,
         title: "Hello World!"
     });
 
-    Map.addListener("click", (event) => {
+    map.addListener("click", (event) => {
         currentMarker.setMap(null);
 
         currentMarker = new google.maps.Marker({
-            map: Map,
+            map: map,
             position: event.latLng,
             title: "Hello World!"
         });

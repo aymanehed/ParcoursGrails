@@ -59,10 +59,9 @@
                         <span id="poiList-label" class="property-label">Poi List</span>
                         <div class="property-value" aria-labelledby="poiList-label">
                             <g:each in="${parcours.poiList}" var="POI">
-                                    <div> poe n°
+                                    <g:link controller="POI" action="show" id="${POI.id}"><div> poe n°
                                     ${POI.id}
-                                    </div>
-
+                                    </div></g:link>
                             </g:each>
                         </div>
                      </li>

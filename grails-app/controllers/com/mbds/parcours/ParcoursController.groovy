@@ -98,4 +98,5 @@ class ParcoursController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
 }
