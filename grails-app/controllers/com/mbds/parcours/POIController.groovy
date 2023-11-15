@@ -17,7 +17,13 @@ class POIController {
 
 
     def show(Long id) {
-        respond POIService.get(id)
+        def poiInstance = POIService.get(id)
+        if(!poiInstance){
+            flash.message = message(code: 'default.not.found.message', args: [message(code: 'POI.label', default: 'POI'), id])
+            redirect action: "index"
+            return
+        }
+        [POI: poiInstance, latitude: poiInstance.latitude, longitude: poiInstance.longitude]
     }
 
     def create() {
