@@ -53,7 +53,6 @@
                             </g:each>
                         </select></div>
                 </g:if>
-
                 <div style="text-decoration: none" ><label for="illustrationList">Illustration List</label>
                     <g:link controller="illustration" action="create" id="${parcours.id} " >Add Illustration</g:link></div>
                 <div style="margin: 20px; padding-right: 20px;  " > <label for="poiList">Poi List</label>

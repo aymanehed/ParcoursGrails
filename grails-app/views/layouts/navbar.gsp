@@ -20,7 +20,7 @@
            <sec:ifLoggedIn>
                <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_USER')}">
                 <li>
-                    <g:link controller="user" action="home"> Home</g:link>
+                    <g:link controller="parcours" action="index"> Parcours</g:link>
                 </li>
                 <li>
                     <g:link controller="profile" action="MesParcours">MesParcours</g:link>

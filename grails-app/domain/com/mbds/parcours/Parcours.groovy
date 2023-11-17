@@ -3,7 +3,6 @@ package com.mbds.parcours
 class Parcours {
     String name
     String description
-
     static belongsTo = [author: User]
 
     static hasMany = [poiList: POI, illustrationList: Illustration]

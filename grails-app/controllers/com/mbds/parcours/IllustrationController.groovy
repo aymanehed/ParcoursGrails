@@ -39,7 +39,7 @@ class IllustrationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'illustration.label', default: 'Illustration'), illustration.id])
+                flash.message = "Illustration created"
                 redirect illustration
             }
             '*' { respond illustration, [status: CREATED] }
@@ -74,7 +74,7 @@ class IllustrationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'illustration.label', default: 'Illustration'), illustration.id])
+                flash.message = "Illustration Updated"
                 redirect illustration
             }
             '*'{ respond illustration, [status: OK] }
@@ -91,7 +91,7 @@ class IllustrationController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'illustration.label', default: 'Illustration'), id])
+                flash.message = "Illustration Updated"
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }
@@ -101,7 +101,7 @@ class IllustrationController {
     protected void notFound() {
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.not.found.message', args: [message(code: 'illustration.label', default: 'Illustration'), params.id])
+                flash.message = "Illustration Deleted"
                 redirect action: "index", method: "GET"
             }
             '*'{ render status: NOT_FOUND }

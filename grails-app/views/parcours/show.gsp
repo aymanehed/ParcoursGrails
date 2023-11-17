@@ -13,10 +13,7 @@
                 <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_USER')}">
                     <li><g:link class="list" controller="profile" action="MesParcours">Mes Parcours</g:link></li>
                 </g:if>
-                <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN')}">
                     <li><g:link class="list" controller="parcours" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-                </g:if>
-                <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
                 <li> <g:link controller="logout" action="index"> <asset:image src="logout.png" width="18px"/> Logout</g:link> </li>
             </ul>
         </div>
@@ -59,8 +56,8 @@
                         <span id="poiList-label" class="property-label">Poi List</span>
                         <div class="property-value" aria-labelledby="poiList-label">
                             <g:each in="${parcours.poiList}" var="POI">
-                                    <g:link controller="POI" action="show" id="${POI.id}"><div> poe n°
-                                    ${POI.id}
+                                    <g:link controller="POI" action="show" id="${POI.id}"><div>
+                                    ${POI.name}
                                     </div></g:link>
                             </g:each>
                         </div>
@@ -79,9 +76,13 @@
 
             <g:form resource="${this.parcours}" method="DELETE">
                 <fieldset class="buttons">
+                    <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN') || sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_MODERATOR')}">
                     <g:link class="edit" action="edit" resource="${this.parcours}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
+                </g:if>
+                    <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN') || currentuser.id==this.parcours.author.id}">
                     <input class="delete" type="submit" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                </fieldset>
+                </g:if> </fieldset>
+
             </g:form>
         </div>
     </body>

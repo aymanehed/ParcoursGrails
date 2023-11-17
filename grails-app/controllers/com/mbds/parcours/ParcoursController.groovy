@@ -3,27 +3,33 @@ package com.mbds.parcours
 import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
+import org.springframework.beans.factory.annotation.Autowired
 
 import javax.annotation.security.PermitAll
 
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['ROLE_ADMIN','ROLE_USER'])
+@Secured(['ROLE_ADMIN','ROLE_USER','ROLE_MODERATOR'])
 class ParcoursController {
     SpringSecurityService springSecurityService
     ParcoursService parcoursService
     UserService userService
+    UserController userController
     static allowedMethods = [save: "POST", delete: "DELETE"]
     def index(Integer max) {
+        def CurrentUser=springSecurityService.currentUser
         params.max = Math.min(max ?: 10, 100)
-        respond parcoursService.list(params), model:[parcoursCount: parcoursService.count()]
+        respond parcoursService.list(params), model:[parcoursCount: parcoursService.count(),currentuser:CurrentUser]
 
     }
     def show(Long id) {
-        respond parcoursService.get(id)
+        def CurrentUser=springSecurityService.currentUser
+        respond parcoursService.get(id) ,model:[currentuser:CurrentUser]
     }
     def create() {
      def CurrentUser=springSecurityService.currentUser
+        //print(parcoursService.count())
+
         respond new Parcours(params),model: [currentuser:CurrentUser]
     }
     def save(Parcours parcours) {
@@ -42,7 +48,7 @@ class ParcoursController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'parcours.label', default: 'Parcours'), parcours.id])
+                flash.message = "Parcours created"
                 redirect parcours
             }
             '*' { respond parcours, [status: CREATED] }
@@ -50,7 +56,9 @@ class ParcoursController {
     }
     def edit(Long id) {
         def CurrentUser=springSecurityService.currentUser
-        respond parcoursService.get(id),model: [currentuser:CurrentUser,userList: userService.list(params)]
+        def parcours = parcoursService.get(id)
+        //print(parcours)
+        respond parcoursService.get(id),model: [currentuser:CurrentUser,userList: userService.list(params),Currentparcours:parcours]
     }
     def update(Parcours parcours) {
         if (parcours == null) {
@@ -59,6 +67,7 @@ class ParcoursController {
         }
 
         try {
+
             parcoursService.save(parcours)
         } catch (ValidationException e) {
             respond parcours.errors, view:'edit'
@@ -67,7 +76,7 @@ class ParcoursController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'parcours.label', default: 'Parcours'), parcours.id])
+                flash.message = "Parcours Updated"
                 redirect parcours
             }
             '*'{ respond parcours, [status: OK] }
@@ -83,7 +92,7 @@ class ParcoursController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'parcours.label', default: 'Parcours'), id])
+                flash.message ="Parcours Deleted"
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }

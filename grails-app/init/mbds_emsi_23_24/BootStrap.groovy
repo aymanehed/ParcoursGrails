@@ -8,11 +8,13 @@ class BootStrap {
         // Création de deux role, Admin et User
         def roleAdmin = new Role(authority: 'ROLE_ADMIN').save()
         def roleUser = new Role(authority: 'ROLE_USER').save()
+        def roleModerator = new Role(authority: 'ROLE_MODERATOR').save()
         // Création du compte administrateur
         def userAdmin = new User(username: "admin", password: "admin", email: "admin@parcours.com").save()
         // Association du compte administrateur avec le role admin
         UserRole.create(userAdmin, roleAdmin, true)
-
+ def userModerator=new User(username: "moderator", password: "moderator", email: "moderator@parcours.com").save()
+        UserRole.create(userModerator, roleModerator, true)
         def simpleUser = new User(username: "user", password: "user", email: "user@parcours.com").save()
         UserRole.create(simpleUser, roleUser, true)
 
@@ -25,7 +27,7 @@ class BootStrap {
                 (1..3).each {
                     Integer parcoursIdx ->
                         // Création de la nouvelle instance de parcours
-                        def parcoursInstance = new Parcours(name: "Parcours de $uName # $parcoursIdx", description: "Une description simple")
+                        def parcoursInstance = new Parcours(name: "Parcours de $uName # $parcoursIdx", description: "Une description simple" )
                         // Pour chaque parcours on crée 3 illustrations
                         (1..3).each {
                             parcoursInstance.addToIllustrationList(new Illustration(name: "grails.svg"))

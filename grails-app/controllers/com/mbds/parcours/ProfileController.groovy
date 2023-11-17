@@ -10,6 +10,7 @@ import static org.springframework.http.HttpStatus.OK
 class ProfileController {
     SpringSecurityService springSecurityService
     UserService userService
+    ParcoursService parcoursService
 
     static allowedMethods = [save: "POST", delete: "DELETE"]
 
@@ -87,7 +88,7 @@ def MesParcours(){
     def currentUser = userService.get(currentUserID)
     def parcours = currentUser.parcoursList
     print(parcours)
-    render(view: 'MesParcours', model: [parcours: parcours])
+    render(view: 'MesParcours', model: [parcours: parcours,parcoursCount: parcoursService.count()])
 }
 
     def MesPois(){

@@ -1,5 +1,6 @@
 package com.mbds.parcours
 
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
@@ -8,6 +9,8 @@ import static org.springframework.http.HttpStatus.*
 class POIController {
     ParcoursService parcoursService
     POIService POIService
+    UserService UserService
+    SpringSecurityService springSecurityService
     static allowedMethods = [save: "POST", delete: "DELETE"]
     @Secured(['permitAll'])
     def index(Integer max) {
@@ -21,7 +24,13 @@ class POIController {
     }
 
     def create() {
-        respond new POI(params), model:[ParcoursList: parcoursService.list()]
+        def currentUserID = springSecurityService.principal.id as Long
+        // Récupérer l'utilisateur courant
+        def currentUser = UserService.get(currentUserID)
+        // Récupérer tous les parcours associés à l'utilisateur courant
+        def parcoursList = Parcours.findAllByAuthor(currentUser)
+
+        respond new POI(params), model:[parcoursListUser: parcoursList,parcoursListAdmin: parcoursService.list()]
     }
 
     def save(POI POI) {
@@ -41,7 +50,7 @@ class POIController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'POI.label', default: 'POI'), POI.id])
+                flash.message = "POI Created"
                 redirect POI
             }
             '*' { respond POI, [status: CREATED] }
@@ -68,7 +77,7 @@ class POIController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'POI.label', default: 'POI'), POI.id])
+                flash.message = "POI Updated"
                 redirect POI
             }
             '*'{ respond POI, [status: OK] }
@@ -85,7 +94,7 @@ class POIController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'POI.label', default: 'POI'), id])
+                flash.message = "POI Deleted"
                 redirect action:"index", method:"GET"
             }
             '*'{ render status: NO_CONTENT }

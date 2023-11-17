@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-  <html lang="en">
+  <html lang="en"><
   <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_USER')}">
   <head>
  <meta name="layout" content="navbar"/>
@@ -156,6 +156,89 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <asset:javascript src="script.js"/>
+    </body>
+</g:if>
+<g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_MODERATOR')}">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible"
+              content="IE=edge">
+        <meta name="viewport"
+              content="width=device-width,
+				initial-scale=1.0">
+        <title>ViewMap</title>
+        <asset:stylesheet src="style.css"/>
+        <asset:stylesheet src="responsive.css"/>
+        <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
+    </head>
+
+    <body>
+
+    <!-- for header part -->
+    <header>
+        <div class="logosec">
+            <div class="logo">ViewMap</div>
+        </div>
+    </header>
+    <div class="main-container">
+        <div class="navcontainer">
+            <nav class="nav">
+                <div class="nav-upper-options">
+                    <g:link controller="user" action="home" class="no-underline">
+                        <div class="nav-option option1">
+                            <asset:image src="dashboard.png"
+                                         class="nav-img"
+                                         alt="dashboard"  />
+                            Dashboard
+                        </div></g:link>
+                    <g:link controller="parcours" action="index" >
+                        <div class="nav-option option3">
+                            <asset:image src="parcours.png"   class="nav-img" alt="Parcours" />
+                            Parcours
+                        </div>
+                    </g:link>
+                    <g:link controller="poi" action="index" >
+                        <div class="nav-option option5">
+                            <asset:image src="pois.png"   class="nav-img" alt="POI" />
+                            POI
+                        </div>
+                    </g:link>
+                    <g:link controller="logout" action="index">
+                        <div class="nav-option option4">
+                            <asset:image src="logout.png"   class="nav-img" alt="Logout"/>
+                            Logout
+                        </div>
+                    </g:link>
+                </div>
+            </nav>
+        </div>
+        <div class="main">
+            <div class="box-container">
+                <div class="box box2">
+                    <div class="text">
+                        <h2 class="topic-heading">${parcoursCount}</h2>
+                        <h2 class="topic">Parcours</h2>
+                    </div>
+
+                    <asset:image src="parcours.png"   class="nav-img" alt="parcours"/>
+                </div>
+
+                <div class="box box3">
+                    <div class="text">
+                        <h2 class="topic-heading">${poiCount}</h2>
+                        <h2 class="topic">POI</h2>
+                    </div>
+                    <asset:image src="pois.png"   class="nav-img" alt="poi"/>
+                </div>
+
+
+            </div>
+
         </div>
     </div>
 

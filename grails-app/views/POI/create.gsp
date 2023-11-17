@@ -4,9 +4,6 @@
     <meta name="layout" content="main"/>
     <g:set var="entityName" value="${message(code: 'POI.label', default: 'POI')}"/>
     <title><g:message code="default.create.label" args="[entityName]"/></title>
-    <meta name="layout" content="main"/>
-    <g:set var="entityName" value="${message(code: 'POI.label', default: 'POI')}"/>
-    <title><g:message code="default.create.label" args="[entityName]"/></title>
     <asset:stylesheet src="createPoi.css"/>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAP18kvzxfaxA3_LHZlN_kKdc8u0qmcaE0&callback=initMap"
@@ -17,6 +14,7 @@
 <body>
 <div class="nav" role="navigation">
     <ul>
+    <li><a class="home" href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a>
         <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_USER')}">
             <li><g:link class="home" controller="profile" action="MesPois">MesPOI</g:link></li>
         </g:if>
@@ -43,8 +41,13 @@
         <g:textField  hidden="" id="lng" name="longitude" required="true" type="number" step="any"/>
 
         <label for="parcours">Parcours:</label>
-        <g:select name="parcours.id" from="${ParcoursList}" optionKey="id" optionValue="name"
-                  required="true"/>
+        <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_USER')}">
+        <g:select name="parcours.id" from="${parcoursListUser}" optionKey="id" optionValue="name"
+                  required="true"/> </g:if>
+        <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN')}">
+            <g:select name="parcours.id" from="${parcoursListAdmin}" optionKey="id" optionValue="name"
+                      required="true"/>
+        </g:if>
         <div id="map" class="form-input-inline" style="width: 100%; height: 300px;"></div>
         <g:submitButton name="Create POI" controller="POI" action="create"/>
 

@@ -14,7 +14,8 @@
 <div class="nav" role="navigation">
     <ul>
         <li><a class="home" href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
-        <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li>
+<g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN') || sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_USER')}">
+    <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]"/></g:link></li> </g:if>
         <li> <g:link controller="logout" action="index"> <asset:image src="logout.png" width="18px"/> Logout</g:link> </li>
     </ul>
 </div>
@@ -34,6 +35,9 @@
                     </g:link>
                 </div>
                 <div class="parcours-description">${parcours.description}</div>
+            <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN')}">
+                <div class="parcours-description">Author: ${parcours.author.username}</div>
+            </g:if>
             </div>
         </g:each>
     </div>

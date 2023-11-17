@@ -5,7 +5,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['ROLE_ADMIN','ROLE_USER'])
+@Secured(['ROLE_ADMIN','ROLE_USER','ROLE_MODERATOR'])
 class UserController {
     SpringSecurityService springSecurityService
     UserService userService
@@ -172,14 +172,5 @@ class UserController {
         redirect(action: "edit", id: userInstance.id)
     }
 
-    @Secured('ROLE_ADMIN')
-    def assignParcoursModerator(Long parcoursId, Long moderatorId) {
-        def parcours = parcoursService.get(parcoursId)
-        def moderator = userService.get(moderatorId)
-        parcours.moderator = moderator
-        parcours.save(flush: true)
 
-        flash.message = "Parcours assigned to moderator successfully."
-        redirect action: "home" // Redirect to a suitable page
-    }
 }

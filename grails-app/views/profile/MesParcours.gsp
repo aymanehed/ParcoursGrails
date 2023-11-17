@@ -38,8 +38,11 @@
         </g:each>
     </div>
 
-    <div class="pagination">
-        <g:paginate total="${parcoursCount ?: 0}"/>
+    <g:if test="${parcours.size() % 9!=0}">
+        <div class="pagination">
+            <g:paginate total="${parcoursCount ?: 0}"/>
+        </div>
+    </g:if>
     </div>
 </div>
 </body>
