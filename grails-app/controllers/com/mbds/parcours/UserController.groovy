@@ -32,13 +32,13 @@ class UserController {
      }
  }
 
-        def modelAdmin=[userCount: userService.count(),parcoursCount:parcoursService.count(),poiCount:TotalPOI,userList: userService.list(),currentUser: currentUser]
+        def modelAdmin=[userCount: userService.count(),parcoursCount:parcoursService.count(),poiCount:TotalPOI,userList: userService.list(),currentUser: currentUser,parcoursList: parcoursService.list()]
         render(view: 'home',model: modelAdmin)
 
     }
     @Secured('permitAll')
     def create() {
-        respond new User(params)
+        respond new User(params),model:[roleList: Role.list()]
     }
     @Secured('permitAll')
     def save(User user) {
@@ -48,6 +48,7 @@ class UserController {
         }
 
         try {
+            if(params.thumbnail){
             def fileData = request.getFile("file")
             if(fileData){
                 def savedPath = new File("C:\\Users\\lenovo\\Desktop\\grails_emsi_mbds_23_24\\grails-app\\assets\\images\${fileData.originalFilename}")
@@ -59,15 +60,12 @@ class UserController {
                 illustration.name = fileData.originalFilename
                 illustration.save(flush: true)
                 user.thumbnail = illustration
-            }
+            }}
 
             userService.save(user)
 
+            def roleUser = Role.findByAuthority(params.authority)
 
-            def roleUser = Role.findByAuthority("ROLE_USER")
-            if(!roleUser){
-                roleUser = new Role(authority: "ROLE_USER").save()
-            }
             UserRole.create(user, roleUser, true)
 
 

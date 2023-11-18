@@ -76,7 +76,7 @@
 
             <g:form resource="${this.parcours}" method="DELETE">
                 <fieldset class="buttons">
-                    <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN') || sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_MODERATOR')}">
+                    <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN') || sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_MODERATOR') || currentuser.id==this.parcours.author.id}">
                     <g:link class="edit" action="edit" resource="${this.parcours}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
                 </g:if>
                     <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN') || currentuser.id==this.parcours.author.id}">

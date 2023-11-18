@@ -15,6 +15,9 @@
                 <li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
             -->
                 <li><a class="home" href="${createLink(uri: '/home')}"><g:message code="default.home.label"/></a></li>
+<g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN')}">
+    <li><g:link class="list" action="index"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
+</g:if>
                 <li><g:link controller="logout" action="index"> <asset:image src="logout.png" width="18px"/> Logout</g:link></li>
 
             </ul>
@@ -39,7 +42,7 @@
                         <g:if test="${user.thumbnail}">
                             <g:link style="cursor: pointer;" id="${user.id}">
                                 <asset:image
-                                        src="${user.thumbnail?.name}"/></g:link>
+                                        src="${user.thumbnail?.name}" style="width: 100px"/></g:link>
                         </g:if>
                     </div>
                 </li>

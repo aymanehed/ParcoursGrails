@@ -52,14 +52,6 @@
             <select hidden="" name="author.id"  style="padding-right: 10px" required="required" id="author">
                 <option value="${currentuser.id}">${currentuser.username}</option>
             </select></div>
-                <div style="margin: 30px " hidden="">
-                    <label for="moderatorId">Assign Moderator</label>
-                    <select name="moderatorId" required="" id="moderatorId">
-                        <g:each in="${userList}" var="u">
-                            <option value="${u.id}" <g:if test="${parcours.moderator==u.id}">selected</g:if>>${u.username}</option>
-                        </g:each>
-                    </select>
-                </div>
             <div style="text-decoration: none" ><label for="illustrationList">Illustration List</label>
             <g:link controller="illustration" action="create" id="${parcours.id} " >Add Illustration</g:link></div>
             <div style="margin: 20px; padding-right: 20px;  " > <label for="poiList">Poi List</label>

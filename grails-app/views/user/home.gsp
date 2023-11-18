@@ -6,6 +6,7 @@
      <title>Welcome to ViewMap</title>
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css">
       <asset:stylesheet src="caroussel.css"/>
+      <asset:link rel="icon" href="favicon.ico" type="image/x-ico"/>
       <asset:javascript src="caroussel.js"/>
   </head>
       <body>
@@ -50,8 +51,8 @@
 				initial-scale=1.0">
         <title>ViewMap</title>
         <asset:stylesheet src="style.css"/>
+        <asset:link rel="icon" href="favicon.ico" type="image/x-ico"/>
         <asset:stylesheet src="responsive.css"/>
-        <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
     </head>
 
     <body>
@@ -60,6 +61,7 @@
     <header>
         <div class="logosec">
             <div class="logo">ViewMap</div>
+            <div class="logo" style="margin-left: 760px">Admin Dashboard</div>
         </div>
     </header>
     <div class="main-container">
@@ -165,6 +167,7 @@
 <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_MODERATOR')}">
 
     <head>
+        <asset:link rel="icon" href="favicon.ico" type="image/x-ico"/>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible"
               content="IE=edge">
@@ -172,6 +175,7 @@
               content="width=device-width,
 				initial-scale=1.0">
         <title>ViewMap</title>
+
         <asset:stylesheet src="style.css"/>
         <asset:stylesheet src="responsive.css"/>
         <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
@@ -183,6 +187,7 @@
     <header>
         <div class="logosec">
             <div class="logo">ViewMap</div>
+            <div class="logo" style="margin-left: 720px">Moderator Dashboard</div>
         </div>
     </header>
     <div class="main-container">
@@ -238,7 +243,30 @@
 
 
             </div>
+            <div class="report-container">
+                <div class="report-header">
+                    <h1 class="recent-Articles">Recent Parcours</h1>
+                    <g:link controller="parcours" action="index" class="view" style="	text-decoration: none;  border-radius: 20px;border: 1px solid #3f0097;background-color: #3f0097;color: #FFFFFF;height: 25px;text-align: center;font-size: 12px;font-weight: bold;justify-content: center;letter-spacing: 1px;text-transform: uppercase; transition: transform 80ms ease-in;">
+                        View All</g:link>
+                </div>
 
+                <div class="report-body">
+                    <div class="report-topic-heading">
+                        <h3 class="t-op">Name</h3>
+                        <h3 class="t-op">Description</h3>
+                        <h3 class="t-op">author</h3>
+                    </div>
+                    <g:each in="${parcoursList}" var="par">
+                        <div class="items">
+                            <div class="item1">
+                                <h3 class="t-op-nextlvl">${par.name}</h3>
+                            <h3 class="t-op-nextlvl">${par.description}</h3>
+                        <h3 class="t-op-nextlvl">${par.author}</h3>
+                        </div>
+                    </g:each>
+                </div>
+                </div>
+            </div>
         </div>
     </div>
 
