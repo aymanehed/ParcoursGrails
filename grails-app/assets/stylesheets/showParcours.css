@@ -1,0 +1,108 @@
+/* Reset some default styles */
+body, h1, ul, li, a {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+}
+
+/* Basic styles for the body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #495057;
+}
+
+/* Main content styles */
+.content {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.property-list {
+    list-style: none;
+}
+
+.property-label {
+    font-weight: bold;
+    margin-right: 10px;
+    color: #343a40;
+}
+
+.property-value {
+    margin-bottom: 10px;
+    color: #495057;
+}
+
+/* Message styles */
+.message {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+/* Buttons and links */
+.buttons {
+    margin-top: 20px;
+}
+
+.edit,
+.delete {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.delete {
+    background-color: #dc3545;
+}
+
+/* Image list styles */
+.image-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image-item {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.image-item img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 4px;
+}
+
+/* Skip link styles */
+.skip {
+    position: absolute;
+    left: -999em;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .content {
+        padding: 10px;
+    }
+}

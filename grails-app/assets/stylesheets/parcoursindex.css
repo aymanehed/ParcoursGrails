@@ -22,6 +22,10 @@
 .parcours-description {
     margin: 10px 0;
 }
+.parcours-author{
+    color: red;
+    font-weight: bold;
+}
 
 /* Add hover effect to parcours-card */
 .parcours-card:hover {

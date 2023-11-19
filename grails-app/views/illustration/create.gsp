@@ -4,6 +4,7 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'illustration.label', default: 'Illustration')}" />
         <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <asset:javascript src="DragAndDrop.js"/>
     </head>
     <body>
         <a href="#create-illustration" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -25,9 +26,15 @@
                 </g:eachError>
             </ul>
             </g:hasErrors>
-            <g:form resource="${this.illustration}" method="POST">
+            <g:form resource="${this.illustration}" method="POST" enctype="multipart/form-data">
                 <fieldset class="form">
-                    <f:all bean="illustration"/>
+                    <div class="image-upload-container">
+                        <div class="file-drop-area">
+                            <span class="file-label">Drop file here or click to upload</span>
+                            <input type="file" name="file" class="drop-zone__input" >
+                        </div>
+                    </div>
+
                 </fieldset>
                 <fieldset class="buttons">
                     <g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

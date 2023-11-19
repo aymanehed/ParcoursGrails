@@ -31,6 +31,13 @@ class IllustrationController {
         }
 
         try {
+            def fileData = request.getFile("file")
+            if(fileData){
+                def savedPath = new File("C:\\Users\\lenovo\\Desktop\\grails_emsi_mbds_23_24\\grails-app\\assets\\images\${fileData.originalFilename}")
+                def savedFile = new File(savedPath as String)
+                fileData.transferTo(savedFile)
+                illustration.name = fileData.originalFilename
+            }
             illustrationService.save(illustration)
         } catch (ValidationException e) {
             respond illustration.errors, view:'create'
@@ -40,7 +47,7 @@ class IllustrationController {
         request.withFormat {
             form multipartForm {
                 flash.message = "Illustration created"
-                redirect illustration
+              redirect illustration
             }
             '*' { respond illustration, [status: CREATED] }
         }
