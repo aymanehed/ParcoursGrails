@@ -33,9 +33,9 @@
                         ${parcour.name}
                     </g:link>
                 </div>
-                <div class="parcours-description">${parcour.description}</div>
             </div>
         </g:each>
+
     </div>
 
     <g:if test="${parcours.size() % 9!=0}">
@@ -44,6 +44,5 @@
         </div>
     </g:if>
     </div>
-</div>
 </body>
 </html>
