@@ -6,6 +6,10 @@
     <g:set var="entityName" value="${message(code: 'POI.label', default: 'POI')}"/>
     <title><g:message code="default.edit.label" args="[entityName]"/></title>
     <asset:stylesheet src="editPoi.css"/>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAP18kvzxfaxA3_LHZlN_kKdc8u0qmcaE0&callback=initMap"
+            async defer></script>
+    <asset:javascript src="poimap.js"/>
 </head>
 
 <body>
@@ -57,24 +61,12 @@
                     </label><input type="text" name="description" value="${POI.description}" required=""
                                    id="description">
                 </div>
-
-                <div class="fieldcontain">
-                    <label for="latitude">Latitude</label><input type="number decimal" name="latitude" value="33,593"
-                                                                 id="latitude">
-                </div>
-
-                <div class="fieldcontain">
-                    <label for="longitude">Longitude</label><input type="number decimal" name="longitude" value="-7,454"
-                                                                   id="longitude">
-                </div>
-
                 <div class="fieldcontain required">
                     <label for="parcours">Parcours
                         <span class="required-indicator">*</span>
                     </label>
-                    <g:select name="parcours" from="${Parcours.list()}" optionKey="id"
-                              value="${POI.parcours?.name}" required="" class="many-to-one" id="${POI.parcours?.id}"/>
-                </div>
+                    <g:select name="parcours" from="${Parcours.list()}" optionKey="id" optionValue="name"
+                              required="true"/>
 
                 <div class="fieldcontain">
                     <ul class="image-list">
@@ -87,6 +79,7 @@
                         </g:each>
                     </ul>
                 </div>
+                    <div id="map" class="form-input-inline" style="width: 100%; height: 300px;"></div>
             </fieldset>
             <fieldset class="buttons">
                 <input class="save" type="submit"
