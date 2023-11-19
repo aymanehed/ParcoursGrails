@@ -4,6 +4,7 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'parcours.label', default: 'Parcours')}" />
         <title><g:message code="default.show.label" args="[entityName]" /></title>
+        <asset:stylesheet src="showParcours.css"/>
     </head>
     <body>
         <a href="#show-parcours" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
@@ -43,7 +44,6 @@
                     </li>
 
                     <li class="fieldcontain">
-                    <span id="illustrationList-label" class="property-label">Illustration List</span>
                     <div class="property-value" aria-labelledby="illustrationList-label">
                         <g:each in="${parcours.illustrationList}" var="illustration">
 

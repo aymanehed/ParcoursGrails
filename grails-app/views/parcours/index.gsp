@@ -36,7 +36,7 @@
                 </div>
                 <div class="parcours-description">${parcours.description}</div>
             <g:if test="${sec.loggedInUserInfo(field: 'authorities')?.contains('ROLE_ADMIN')}">
-                <div class="parcours-description">Author: ${parcours.author.username}</div>
+                <div class="parcours-author">Author: ${parcours.author.username}</div>
             </g:if>
             </div>
         </g:each>
