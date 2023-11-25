@@ -24,7 +24,7 @@
                 </li>
                 <li>
                     <g:link controller="profile" action="MesParcours">MesParcours</g:link>
-                </li>
+                  </li>
                 <li>
                     <g:link controller="profile" action="MesPois"> MesPois</g:link>
                 </li>
