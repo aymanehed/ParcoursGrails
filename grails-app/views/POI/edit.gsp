@@ -7,8 +7,7 @@
     <title><g:message code="default.edit.label" args="[entityName]"/></title>
     <asset:stylesheet src="editPoi.css"/>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAP18kvzxfaxA3_LHZlN_kKdc8u0qmcaE0&callback=initMap"
-            async defer></script>
+
     <asset:javascript src="poimap.js"/>
 </head>
 
